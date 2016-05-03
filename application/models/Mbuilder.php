@@ -41,5 +41,9 @@ class Mbuilder extends CI_Model {
 		}else{
 			return TRUE;
 		}
-	}	
+	}
+
+	public function MFverify(){
+		#这是登陆时验证用户名密码的方法
+	}
 }

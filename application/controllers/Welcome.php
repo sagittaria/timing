@@ -71,10 +71,16 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function verifying(){
-		#验证用户名密码		echo "verifying username and password...";
+		#验证用户名密码
+		
 	}
 	
 	public function logout(){
 		#注销登录
+	}
+	
+	public function trydbops(){
+		#这是个用来测试数据库操作的方法，真正部署时应该被注释或删掉
+		
 	}
 }
