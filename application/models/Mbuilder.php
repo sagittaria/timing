@@ -45,5 +45,19 @@ class Mbuilder extends CI_Model {
 
 	public function MFverify(){
 		#这是登陆时验证用户名密码的方法
+		$un = $this->input->post('builderUsername');
+		$pw = md5($this->input->post('builderPassword'));
+		$query = $this->db->select("builderUsername,builderEmail")
+					->where('builderUsername', $un)
+					->where('builderPassword', $pw)
+					->limit(1)
+					->get('builder');
+		$flag=$query->num_rows();
+		
+		if($flag){
+			return $query->result_array();
+		}else{
+			return FALSE;
+		}
 	}
 }

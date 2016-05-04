@@ -72,7 +72,11 @@ class Welcome extends CI_Controller {
 	
 	public function verifying(){
 		#验证用户名密码
-		
+		if($user=$this->Mbuilder->MFverify()){
+			echo "signed in."; var_dump($user[0]);
+		}else{
+			echo "Incorrect username or password;";
+		}
 	}
 	
 	public function logout(){
