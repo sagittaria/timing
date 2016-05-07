@@ -47,6 +47,7 @@ class Mbuilder extends CI_Model {
 		#这是登陆时验证用户名密码的方法
 		$un = $this->input->post('builderUsername');
 		$pw = md5($this->input->post('builderPassword'));
+		if($un==''||$pw==''){return FALSE;}		
 		$query = $this->db->select("builderUsername,builderEmail")
 					->where('builderUsername', $un)
 					->where('builderPassword', $pw)

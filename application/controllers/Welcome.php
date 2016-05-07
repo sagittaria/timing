@@ -60,7 +60,8 @@ class Welcome extends CI_Controller {
 		if($user=$this->Mbuilder->MFverify()){
 			echo "signed in."; var_dump($user[0]);
 		}else{
-			echo "Incorrect username or password;";
+			echo "Invalid username or password";
+			echo "<script>setTimeout('window.history.go(-1)',1000);</script>";
 		}
 	}
 	
