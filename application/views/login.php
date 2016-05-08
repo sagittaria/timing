@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php echo form_open('Welcome/verifying','id="loginForm"'); ?>
 		<input type="text" name="builderUsername" value="<?php echo set_value('builderUsername'); ?>" minlength='5' required/><br>
 		<input type="password" name="builderPassword" required/><br>
-		<input type="submit" class="submit" value="Login"/> or <a href="register"> register</a> ?
+		<input type="submit" class="submit" value="Login"/> or <a href="register"> register</a>
 	</form>
 </body>
 </html>
