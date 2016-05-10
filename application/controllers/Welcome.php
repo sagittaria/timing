@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
 		$un=$this->input->post('builderUsername');
 		$em=$this->input->post('builderEmail');
 		$this->form_validation->set_rules('builderUsername', 'Username', 'required|trim|min_length[5]|max_length[20]|callback_validUsername['.$un.']');
-		$this->form_validation->set_rules('builderPassword', 'password', 'required|min_length[6]');
+		$this->form_validation->set_rules('builderPassword', 'Password', 'required|min_length[6]');
 		$this->form_validation->set_rules('builderEmail', 'Email', 'trim|required|valid_email|callback_validEmail['.$em.']');
 		
 		if ($this->form_validation->run() === FALSE){
