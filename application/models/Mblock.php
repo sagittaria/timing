@@ -1,12 +1,24 @@
 <?php
-class Mbuilder extends CI_Model {
+class Mblock extends CI_Model {
 
     public function __construct()
     {
         $this->load->database();
     }
 	
-	public function MFregister(){
+    public function MFaddBlockGo(){
+    	$data = array(
+    			'blockName' => $this->input->post('blockName'),
+    			'blockDescription' => $this->input->post('blockDescription'),
+    			'blockFoundation' => time(),
+    			'blockStatus' => 0,
+    			'builderId' => $_SESSION['id']
+    	);
+    	
+    	return $this->db->insert('block', $data);
+    }
+
+/*	public function MFregister(){
 		$data = array(
                'builderUsername' => $this->input->post('builderUsername'),
                'builderPassword' => md5($this->input->post('builderPassword')),
@@ -48,7 +60,7 @@ class Mbuilder extends CI_Model {
 		$un = $this->input->post('builderUsername');
 		$pw = md5($this->input->post('builderPassword'));
 		if($un==''||$pw==''){return FALSE;}		
-		$query = $this->db->select("builderUsername,builderEmail,builderId")
+		$query = $this->db->select("builderUsername,builderEmail")
 					->where('builderUsername', $un)
 					->where('builderPassword', $pw)
 					->limit(1)
@@ -60,5 +72,5 @@ class Mbuilder extends CI_Model {
 		}else{
 			return FALSE;
 		}
-	}
+	}*/
 }

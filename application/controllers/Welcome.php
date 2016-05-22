@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->model('Mbuilder'); 
         $this->load->helper('url');
+        $this->load->library('session');
     }
 	
 	public function index(){
@@ -58,7 +59,10 @@ class Welcome extends CI_Controller {
 	public function verifying(){
 		#验证用户名密码
 		if($user=$this->Mbuilder->MFverify()){
-			echo "signed in."; var_dump($user[0]);
+			echo "signed in as ".$user[0]['builderId']." ".$user[0]['builderUsername']." ".$user[0]['builderEmail']; //var_dump($user[0]);
+			$_SESSION['id']=$user[0]['builderId'];
+			$_SESSION['name']=$user[0]['builderUsername'];
+			$_SESSION['email']=$user[0]['builderEmail'];
 		}else{
 			echo "Invalid username or password";
 			echo "<script>setTimeout('window.history.go(-1)',1000);</script>";
