@@ -6,6 +6,7 @@ class Welcome extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('Mbuilder'); 
+        //$this->load->model('Mblock');
         $this->load->helper('url');
         $this->load->library('session');
     }
@@ -69,12 +70,8 @@ class Welcome extends CI_Controller {
 		}
 	}
 	
-	public function logout(){
-		#注销登录
-	}
-	
 	public function trydbops(){
 		#这是个用来测试数据库操作的方法，真正部署时应该被注释或删掉
-		
+		//$this->Mblock->MFgetAllMyBlocks();
 	}
 }

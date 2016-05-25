@@ -17,6 +17,28 @@ class Mblock extends CI_Model {
     	
     	return $this->db->insert('block', $data);
     }
+    
+    public function MFgetAllMyBlocks(){#读出本用户目前所有block
+    	$query = $this->db->select("blockId, blockName, blockDescription, blockFoundation, blockStatus, builderId")
+    	->where('builderId', $_SESSION['id'])
+    	->get('block');
+    	$flag=$query->num_rows();
+
+    	if($flag){#有，返回全部
+    		return $query->result_array();
+    	}else{#没有，新建个，并返回之
+    		$data = array(
+    				'blockName' => 'void',
+    				'blockDescription' => 'Nothingness',
+    				'blockFoundation' => time(),
+    				'blockStatus' => 1,
+    				'builderId' => $_SESSION['id']
+    		);
+    		 
+    		$this->db->insert('block', $data);
+    		$this->MFgetAllMyBlocks();
+    	}
+    }
 
 /*	public function MFregister(){
 		$data = array(

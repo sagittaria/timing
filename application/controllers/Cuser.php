@@ -14,7 +14,10 @@ class Cuser extends CI_Controller {
 	
 	public function index(){
 		#用户首页，显示各 block 的状态和累积时长
-		$this->load->view('vuser/showblocks');
+		$data['blocks']=$this->Mblock->MFgetAllMyBlocks();
+		$this->load->view('header');
+		$this->load->view('vuser/showallmyblock',$data);
+		$this->load->view('footer');
 	}
 	
 	public function addBlock(){
@@ -32,4 +35,7 @@ class Cuser extends CI_Controller {
 		}
 	}
 	
+	public function logout(){
+		#注销登录
+	}
 }
