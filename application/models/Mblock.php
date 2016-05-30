@@ -18,6 +18,11 @@ class Mblock extends CI_Model {
     	return $this->db->insert('block', $data);
     }
     
+    public function MFdeleteBlockGo(){
+    	$blockId = $this->input->post('blockId');
+    	return $this->db->delete('block', array('blockId'=>$blockId));
+    }
+    
     public function MFgetAllMyBlocks(){#读出本用户目前所有block
     	$query = $this->db->select("blockId, blockName, blockDescription, blockFoundation, blockStatus, builderId")
     	->where('builderId', $_SESSION['id'])
@@ -31,7 +36,7 @@ class Mblock extends CI_Model {
     				'blockName' => 'void',
     				'blockDescription' => 'Nothingness',
     				'blockFoundation' => time(),
-    				'blockStatus' => 1,
+    				'blockStatus' => 3,
     				'builderId' => $_SESSION['id']
     		);
     		 

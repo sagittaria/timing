@@ -10,6 +10,9 @@ class Cuser extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('session');
+ 		if(!isset($_SESSION['id'])){
+ 			redirect('Welcome');
+ 		}
 	}
 	
 	public function index(){
@@ -28,6 +31,9 @@ class Cuser extends CI_Controller {
 	}
 	
 	public function addBlockGo(){
+		if($_SERVER['REQUEST_METHOD'] !== "POST"){
+			redirect('Cuser/addBlock');
+		}#禁止输入网址访问
 		if($this->Mblock->MFaddBlockGo()){
 			echo "new block added.";
 		}else{
@@ -35,7 +41,17 @@ class Cuser extends CI_Controller {
 		}
 	}
 	
+	public function deleteBlock(){
+		#删除block，id由ajax方法post过来
+		if($_SERVER['REQUEST_METHOD'] !== "POST"){
+			redirect('logout');
+		}#禁止输入网址访问
+		echo $this->Mblock->MFdeleteBlockGo();
+	}
+	
 	public function logout(){
 		#注销登录
+		session_destroy();
+		redirect('Welcome');
 	}
 }

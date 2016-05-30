@@ -60,10 +60,11 @@ class Welcome extends CI_Controller {
 	public function verifying(){
 		#验证用户名密码
 		if($user=$this->Mbuilder->MFverify()){
-			echo "signed in as ".$user[0]['builderId']." ".$user[0]['builderUsername']." ".$user[0]['builderEmail']; //var_dump($user[0]);
+			//echo "signed in as ".$user[0]['builderId']." ".$user[0]['builderUsername']." ".$user[0]['builderEmail']; //var_dump($user[0]);
 			$_SESSION['id']=$user[0]['builderId'];
 			$_SESSION['name']=$user[0]['builderUsername'];
 			$_SESSION['email']=$user[0]['builderEmail'];
+			redirect('Cuser/index');
 		}else{
 			echo "Invalid username or password";
 			echo "<script>setTimeout('window.history.go(-1)',1000);</script>";
@@ -72,6 +73,5 @@ class Welcome extends CI_Controller {
 	
 	public function trydbops(){
 		#这是个用来测试数据库操作的方法，真正部署时应该被注释或删掉
-		//$this->Mblock->MFgetAllMyBlocks();
 	}
 }
