@@ -8,18 +8,37 @@
 		<td><?= $block['blockFoundation']; ?></td>
 		<td><?= $block['blockStatus']; ?></td>
 		<td><?= $block['builderId']; ?></td>
-		<td><a onclick="blockUpdate(<?php echo $block['blockId']; ?>)">update</a></td>
-		<td><a onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</a></td>
-		<td><a onclick="ajaxBlockDelete(<?php echo $block['blockId']; ?>)">delete</a></td>
+		<td><button onclick="blockUpdate(<?php echo $block['blockId']; ?>)">update</button></td>
+		<td><button onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button></td>
+		<td><button onclick="ajaxBlockDelete(<?php echo $block['blockId']; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
+<div class= "modal" id ="myModal" data-backdrop="static" data-keyboard="false" >
+     <div class="modal-dialog">
+           <div class= "modal-content">
+               <div class= "modal-header">
+                    <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
+                    <h4 class= "modal-title">lay a brick</h4>
+               </div>
+               <div class= "modal-body">
+                    <p>here is the content</p >
+               </div>
+               <div class= "modal-footer">
+                    <button class= "btn btn-default">add</button>
+                    <button class= "btn btn-info">reset</button>
+               </div>
+           </div>
+     </div >
+  </div >
+
 <script>
 function blockUpdate(BlockID){
 	
 }
 
 function blockBuild(BlockID){
-	
+	alert(BlockID);
+	$('#myModal').modal('show');
 }
 
 function ajaxBlockDelete(BlockID){
