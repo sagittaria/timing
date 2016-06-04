@@ -36,9 +36,15 @@ class Cuser extends CI_Controller {
 		}#禁止输入网址访问
 		if($this->Mblock->MFaddBlockGo()){
 			echo "new block added.";
+			redirect('Cuser/index');
 		}else{
 			echo "block not added.";
+			redirect('Cuser/addBlock');
 		}
+	}
+	
+	public function addBrick(){
+		#新增个 brick
 	}
 	
 	public function deleteBlock(){

@@ -10,5 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/bootstrap.min.css');?>" />
   </head>
   <body>
-  <span style="float:left"><?php echo $_SESSION['name'];?></span><a href='<?php echo site_url('Cuser/logout');?>' style="float:right;">Logout</a>
+  <span style="float:left"><?php echo $_SESSION['name'];?></span>
+  <a href='<?php echo site_url('Cuser/addBlock');?>' style="float:left;">-----addBlock</a>
+  <a href='<?php echo site_url('Cuser/logout');?>' style="float:right;">Logout</a>
+  <a href='<?php echo site_url('Cuser/index');?>' style="float:right;">index-----</a>
   <div style="clear:both;"></div>
