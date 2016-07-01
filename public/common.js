@@ -7,7 +7,7 @@ $(function(){
 		if(a==b){
 			$('#btnDeleteBlock').removeAttr('disabled');
 		}else{
-			$('#btnDeleteBlock').attr('disabled','diabled');
+			$('#btnDeleteBlock').attr('disabled','disabled');
 		}
 	});
 	

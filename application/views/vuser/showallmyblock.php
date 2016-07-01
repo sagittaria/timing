@@ -95,12 +95,12 @@ function blockUpdate(BlockID){//更新block
 	$('#updateBlockModal').modal('show');
 }
 
-function blockBuild(BlockID){//增加brick
+function blockBuild(BlockID){//增加block
 	$('#newBrickForm #blockId').val(BlockID);
 	$('#addBrickModal').modal('show');
 }
 
-function BlockDelete(BlockID,BlockName){//增加brick
+function BlockDelete(BlockID,BlockName){//删除block
 	$('#nameOfTheBlockToBeDeleted').text(BlockName);
 	$('#confirmBlockDeleteModal #blockId').val(BlockID);
 	$('#confirmBlockDeleteModal').modal('show');
