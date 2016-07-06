@@ -15,30 +15,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <body>
     
     <?php echo form_open('Welcome/verifying','id="loginForm" name="loginForm"'); ?>
-		<input type="text" name="builderUsername" value="<?php echo set_value('builderUsername'); ?>" ><br>
-		<input type="password" name="builderPassword" ><br>
+		<input type="text" name="builderUsername" value="<?php echo set_value('builderUsername'); ?>" >kasoya<br>
+		<input type="password" name="builderPassword" >123456<br>
 		<input type="submit"  value="Login"> or <a href="<?=site_url('Welcome/register')?>"> register</a>
 	</form>
 
 
     <script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('public/js/bootstrap.min.js');?>" type="text/javascript"></script>
-	<script src="<?php echo base_url('public/validate.min.js');?>" type="text/javascript"></script>
-	<script type="text/javascript">
-		var validator = new FormValidator('loginForm', [{
-		    name: 'builderUsername',
-		    display: 'Username',
-		    rules: 'required'
-		}, {
-		    name: 'builderPassword',
-		    display: 'Password',
-		    rules: 'required'
-		}], function(errors, event) {
-		    if (errors.length > 0) {
-		        alert(errors[0].message);
-		    }
-		});
-	</script>
 	
   </body>
 </html>
