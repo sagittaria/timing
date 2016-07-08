@@ -8,7 +8,7 @@
 		<td><?= $block['blockFoundation']; ?></td>
 		<td><?= $block['blockStatus']; ?></td>
 		<td><?= $block['builderId']; ?></td>
-		<td><button onclick="ajaxCheckBricks(<?php echo $block['blockId']; ?>)">check</button></td>
+		<td><button onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button></td>
 		<td><button onclick="blockUpdate(<?php echo $block['blockId']; ?>)">update</button></td>
 		<td><button onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button></td>
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
@@ -83,11 +83,9 @@
 </div >
 
 <script>
-function ajaxCheckBricks(BlockID){
+function blockCheck(BlockID){//显示这个block里的brick
 	alert('check: '+BlockID);
-	//$.ajax({//显示这个block里所有的brick
-
-	//})
+	//也准备显示到一个模态框里
 }
 
 function blockUpdate(BlockID){//更新block
