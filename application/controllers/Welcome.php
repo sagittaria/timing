@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 			$this->load->view('register');//如果没通过检查，就显示注册页面
 		}else{   //如果通过检查的话调用 模型的 MFregister()方法注册
 			if($this->Mbuilder->MFregister()){
-				echo "Thanks for signing up ^_^";
+				echo "Welcome, ".$un.". Click to <a href='".site_url()."'> Sign In </a>";
 			}else{
 				echo "somehow failed, please try again T^T";
 			}

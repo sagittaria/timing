@@ -55,6 +55,19 @@ class Cuser extends CI_Controller {
 		echo $this->Mblock->MFdeleteBlockGo();
 	}
 	
+	public function updateBlock(){
+		#修改block
+		if($_SERVER['REQUEST_METHOD'] !== "POST"){
+			redirect('logout');
+		}#禁止输入网址访问
+		if($this->Mblock->MFupdateBlockGo()){
+			echo "Block updated.";
+		}else{
+			echo "<script>alert('Somehow failed, please try later');</script>";
+		}
+		redirect('Cuser/index');
+	}
+	
 	public function logout(){
 		#注销登录
 		session_destroy();

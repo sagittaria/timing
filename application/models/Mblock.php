@@ -41,8 +41,20 @@ class Mblock extends CI_Model {
     		);
     		 
     		$this->db->insert('block', $data);
-    		$this->MFgetAllMyBlocks();
+    		return $this->MFgetAllMyBlocks();
     	}
+    }
+    
+    public function MFupdateBlockGo(){#更新Block信息
+    	return FALSE;
+    	$data = array(
+    			'blockName' => $this->input->post('blockName'),
+    			'blockDescription' => $this->input->post('blockDescription'),
+    			'blockStatus' => $this->input->post('blockStatus')
+    	);
+    	$blockId = $this->input->post('blockId');
+    	$this->db->where('blockId',$blockId);
+    	return ($this->db->update('block',$data));
     }
 
 /*	public function MFregister(){

@@ -9,7 +9,7 @@
 		<td><?= $block['blockStatus']; ?></td>
 		<td><?= $block['builderId']; ?></td>
 		<td><button onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button></td>
-		<td><button onclick="blockUpdate(<?php echo $block['blockId']; ?>)">update</button></td>
+		<td><button onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button></td>
 		<td><button onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button></td>
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
@@ -38,6 +38,24 @@
      </div >
 </div >
 
+<div class= "modal" id ="checkBlockModal" data-backdrop="static" >
+     <div class="modal-dialog">
+           <div class= "modal-content">
+               <div class= "modal-header">
+                    <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
+                    <h4 class= "modal-title">check bricks in this block</h4>
+               </div>
+               <div class= "modal-body">
+                    
+               </div>
+               <div class= "modal-footer">
+                    <button class= "btn btn-default">nothing1</button>
+                    <button class= "btn btn-success">nothing2</button>
+               </div>
+           </div>
+     </div >
+</div >
+
 <div class= "modal" id ="updateBlockModal" data-backdrop="static" >
      <div class="modal-dialog">
            <div class= "modal-content">
@@ -47,16 +65,15 @@
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/updateBlock','id="updateBlockForm" name="updateBlockForm"'); ?>
-					<input type="text" name="blockName"/>
-					<input type="text" name="blockDescription"/>
-					<input type="text" name="blockStatus"/>
+					<input type="text" name="blockName" id="blockName"/>
+					<input type="text" name="blockDescription" id="blockDescription"/>
+					<input type="text" name="blockStatus" id="blockStatus"/>
 					<input type="text" name="blockId" id="blockId"/>
-					<input type="submit" value="update block"/>
+	                <input type="submit" value="update block"/>
 					</form>
-               </div>
+			   </div>
                <div class= "modal-footer">
-                    <button class= "btn btn-default">update</button>
-                    <button class= "btn btn-success">reset</button>
+
                </div>
            </div>
      </div >
@@ -66,7 +83,7 @@
      <div class="modal-dialog">
            <div class= "modal-content">
                <div class= "modal-header">
-                    <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
+                    <button class= "close" data-dismiss="modal" ><span> &times;</span></button>
                     <h4 class= "modal-title">confirm delete this block</h4>
                </div>
                <div class= "modal-body">
@@ -84,12 +101,16 @@
 
 <script>
 function blockCheck(BlockID){//显示这个block里的brick
-	alert('check: '+BlockID);
+	//alert('check: '+BlockID);
 	//也准备显示到一个模态框里
+	$('#checkBlockModal').modal('show');
 }
 
-function blockUpdate(BlockID){//更新block
+function blockUpdate(BlockID,BlockName,BlockDescription,BlockStatus){//更新block
 	$('#updateBlockForm #blockId').val(BlockID);
+	$('#updateBlockForm #blockName').val(BlockName);
+	$('#updateBlockForm #blockDescription').val(BlockDescription);
+	$('#updateBlockForm #blockStatus').val(BlockStatus);
 	$('#updateBlockModal').modal('show');
 }
 
