@@ -7,6 +7,7 @@ class Cuser extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Mblock');
+		$this->load->model('Mbrick');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('session');
@@ -31,8 +32,9 @@ class Cuser extends CI_Controller {
 	}
 	
 	public function addBlockGo(){
+		#增加block的功能
 		if($_SERVER['REQUEST_METHOD'] !== "POST"){
-			redirect('Cuser/addBlock');
+			redirect('logout');
 		}#禁止输入网址访问
 		if($this->Mblock->MFaddBlockGo()){
 			echo "new block added.";
@@ -45,6 +47,15 @@ class Cuser extends CI_Controller {
 	
 	public function addBrick(){
 		#新增个 brick
+		if($_SERVER['REQUEST_METHOD'] !== "POST"){
+			redirect('Cuser/logout');
+		}#禁止输入网址访问
+		if($this->Mbrick->MFaddBrickGo()){
+			echo "succeeded.";
+		}else{
+			echo "<script>alert('Somehow failed, please try later');</script>";
+		}
+		redirect('Cuser/index');
 	}
 	
 	public function deleteBlock(){
@@ -67,7 +78,7 @@ class Cuser extends CI_Controller {
 		}
 		redirect('Cuser/index');
 	}
-	
+		
 	public function logout(){
 		#注销登录
 		session_destroy();

@@ -31,8 +31,7 @@
 					</form>
                </div>
                <div class= "modal-footer">
-                    <button class= "btn btn-default">add</button>
-                    <button class= "btn btn-info">reset</button>
+                    
                </div>
            </div>
      </div >
@@ -114,7 +113,7 @@ function blockUpdate(BlockID,BlockName,BlockDescription,BlockStatus){//更新blo
 	$('#updateBlockModal').modal('show');
 }
 
-function blockBuild(BlockID){//增加block
+function blockBuild(BlockID){//虽然名叫blockBuild，其实是addNewBrick
 	$('#newBrickForm #blockId').val(BlockID);
 	$('#addBrickModal').modal('show');
 }
