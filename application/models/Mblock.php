@@ -46,7 +46,6 @@ class Mblock extends CI_Model {
     }
     
     public function MFupdateBlockGo(){#更新Block信息
-    	return FALSE;
     	$data = array(
     			'blockName' => $this->input->post('blockName'),
     			'blockDescription' => $this->input->post('blockDescription'),
