@@ -1,4 +1,4 @@
-<table border="1" style="width:100%;">
+<table id="tableOfBlocks" border="1" style="width:100%;">
 <tr><th>blockId</th><th>name</th><th>description</th><th>foundation</th><th>status</th><th>onwerid</th><th>op1</th><th>op2</th><th>op3</th><th>op4</th></tr>
 <?php foreach($blocks as $block){ 
 	if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
@@ -14,6 +14,7 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
+
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">
            <div class= "modal-content">
@@ -45,7 +46,9 @@
                     <h4 class= "modal-title">check bricks in this block</h4>
                </div>
                <div class= "modal-body">
-                    
+                 <table id="tableOfBricks" class="table table-striped table-bordered">
+				 <!-- 将由JS填充此表格 -->
+				 </table>
                </div>
                <div class= "modal-footer">
                     <button class= "btn btn-default">More...</button>
@@ -71,7 +74,7 @@
 					</form>
 			   </div>
                <div class= "modal-footer">
-
+			   
                </div>
            </div>
      </div >
@@ -102,13 +105,18 @@ function blockCheck(intBlockID){//显示这个block里的brick
 	$.ajax({
 		type:'post',
 		url:'<?php echo site_url('CUser/checkBlock'); ?>',
-		data:{BlockID:intBlockID},
+		data:{BlockId:intBlockID},
 		success:function(response,status,xhr){
- 			if(response){
-				//var valveInfo=JSON.parse(response);
-				//$('#vInfoSn').val(valveInfo.valveSn);
-				
+			bricks = JSON.parse(response);
+			$('#checkBlockModal .modal-body *').remove();
+ 			if(bricks.length){
+				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>start</th><th>duration</th><th>content</th></tr></table>");
+				for(i=0;i<(bricks.length);i++){
+					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickStart+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
+				}
+				$('#checkBlockModal').modal('show');
 			}else{
+				$("#checkBlockModal .modal-body").append("<div class='alert alert-warning'><strong>Void</strong> - No brick found.</div>");
 				$('#checkBlockModal').modal('show');
 			}
 		}

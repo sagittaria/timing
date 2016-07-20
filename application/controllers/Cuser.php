@@ -78,6 +78,14 @@ class Cuser extends CI_Controller {
 		}
 		redirect('Cuser/index');
 	}
+	
+	public function checkBlock(){
+		#查看block里有的brick
+		if($_SERVER['REQUEST_METHOD'] !== "POST"){
+			redirect('logout');
+		}#禁止输入网址访问
+		echo json_encode($this->Mbrick->MFcheckBlockGo());
+	}
 		
 	public function logout(){
 		#注销登录

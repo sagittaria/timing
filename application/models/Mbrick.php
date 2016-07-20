@@ -18,4 +18,13 @@ class Mbrick extends CI_Model {
     	return $this->db->insert('brick', $data);
     }
     
+	public function MFcheckBlockGo(){
+		$BlockId = $this->input->post('BlockId');
+		$query = $this->db->select('brickId,brickStart,brickDuration,brickContent')
+		->order_by('brickId asc')
+		->where('blockId',$BlockId)
+		->limit(10)
+		->get('brick');
+		return $query->result_array();
+	}
 }
