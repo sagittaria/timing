@@ -48,8 +48,7 @@
                     
                </div>
                <div class= "modal-footer">
-                    <button class= "btn btn-default">nothing1</button>
-                    <button class= "btn btn-success">nothing2</button>
+                    <button class= "btn btn-default">More...</button>
                </div>
            </div>
      </div >
@@ -99,10 +98,21 @@
 </div >
 
 <script>
-function blockCheck(BlockID){//显示这个block里的brick
-	//alert('check: '+BlockID);
-	//也准备显示到一个模态框里
-	$('#checkBlockModal').modal('show');
+function blockCheck(intBlockID){//显示这个block里的brick
+	$.ajax({
+		type:'post',
+		url:'<?php echo site_url('CUser/checkBlock'); ?>',
+		data:{BlockID:intBlockID},
+		success:function(response,status,xhr){
+ 			if(response){
+				//var valveInfo=JSON.parse(response);
+				//$('#vInfoSn').val(valveInfo.valveSn);
+				
+			}else{
+				$('#checkBlockModal').modal('show');
+			}
+		}
+	})	
 }
 
 function blockUpdate(BlockID,BlockName,BlockDescription,BlockStatus){//更新block
