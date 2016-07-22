@@ -51,7 +51,7 @@
 				 </table>
                </div>
                <div class= "modal-footer">
-                    <button class= "btn btn-default">More...</button>
+                    <a href="<?php echo site_url('Cuser/showMoreBricks');?>" target="_blank" class= "btn btn-default">More...</a>
                </div>
            </div>
      </div >

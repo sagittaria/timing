@@ -27,4 +27,8 @@ class Mbrick extends CI_Model {
 		->get('brick');
 		return $query->result_array();
 	}
+	
+	public function MFshowMoreBricks(){
+		return "testString";
+	}
 }

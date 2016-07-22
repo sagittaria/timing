@@ -86,6 +86,14 @@ class Cuser extends CI_Controller {
 		}#禁止输入网址访问
 		echo json_encode($this->Mbrick->MFcheckBlockGo());
 	}
+	
+	public function showMoreBricks(){
+		#点开checkBlock之后，点More弹出的窗口，显示更多bricks
+		$data['bricks']=$this->Mbrick->MFshowMoreBricks();
+		$this->load->view('header');
+		$this->load->view('vuser/showMoreBricks',$data);
+		$this->load->view('footer');
+	}
 		
 	public function logout(){
 		#注销登录
