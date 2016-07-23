@@ -51,7 +51,8 @@
 				 </table>
                </div>
                <div class= "modal-footer">
-                    <a href="<?php echo site_url('Cuser/showMoreBricks');?>" target="_blank" class= "btn btn-default">More...</a>
+					<input type="text" id="blockIdUsedToShowMoreBricks">
+                    <button onclick="window.open('<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0')" class= "btn btn-default">More...</button>
                </div>
            </div>
      </div >
@@ -102,6 +103,7 @@
 
 <script>
 function blockCheck(intBlockID){//显示这个block里的brick
+	$('#blockIdUsedToShowMoreBricks').val(intBlockID);
 	$.ajax({
 		type:'post',
 		url:'<?php echo site_url('CUser/checkBlock'); ?>',
@@ -110,9 +112,9 @@ function blockCheck(intBlockID){//显示这个block里的brick
 			bricks = JSON.parse(response);
 			$('#checkBlockModal .modal-body *').remove();
  			if(bricks.length){
-				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>start</th><th>duration</th><th>content</th></tr></table>");
+				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>#</th><th>start</th><th>duration</th><th>content</th></tr></table>");
 				for(i=0;i<(bricks.length);i++){
-					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickStart+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
+					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickId+"</td><td>"+bricks[i].brickStart+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
 				}
 				$('#checkBlockModal').modal('show');
 			}else{

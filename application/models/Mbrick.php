@@ -21,7 +21,7 @@ class Mbrick extends CI_Model {
 	public function MFcheckBlockGo(){
 		$BlockId = $this->input->post('BlockId');
 		$query = $this->db->select('brickId,brickStart,brickDuration,brickContent')
-		->order_by('brickId asc')
+		->order_by('brickId desc')
 		->where('blockId',$BlockId)
 		->get('brick',6);
 		return $query->result_array();
@@ -39,10 +39,10 @@ class Mbrick extends CI_Model {
 		//2.处理正事
 		$info=array();
 		#2.1查per_page条记录
-		$query = $this->db->get_where('brick',array('blockId'=>$blockId),$per_page,$num);
+		$query = $this->db->order_by("brickId desc")->get_where('brick',array('blockId'=>$blockId),$per_page,$num);
 		$info['bricks']=$query->result_array();
-		#2.2总条数		
-		$info['total_rows']=183;
+		#2.2总条数
+		$info['total_rows'] = $this->db->where('blockId',$blockId)->from('brick')->count_all_results();
 		return $info;
 	}
 }
