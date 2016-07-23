@@ -38,7 +38,10 @@ class Mbrick extends CI_Model {
 		
 		//2.处理正事
 		$info=array();
+		#2.1查per_page条记录
+		$query = $this->db->get_where('brick',array('blockId'=>$blockId),$per_page,$num);
 		$info['bricks']=$query->result_array();
+		#2.2总条数		
 		$info['total_rows']=183;
 		return $info;
 	}
