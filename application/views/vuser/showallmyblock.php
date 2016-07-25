@@ -24,7 +24,8 @@
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/addBrick','id="newBrickForm" name="newBrickForm"'); ?>
-					<input type="text" name="brickStart"/>
+					<input type="text" name="brickStart" id="brickStart"/>
+					<script> $(function () {	$('#brickStart').datetimepicker({viewMode:'days',format:'YYYY/MM/DD HH:mm'});	});	</script>
 					<input type="text" name="brickDuration"/>
 					<input type="text" name="brickContent"/>
 					<input type="text" name="blockId" id="blockId"/>

@@ -87,10 +87,12 @@ class Cuser extends CI_Controller {
 		echo json_encode($this->Mbrick->MFcheckBlockGo());
 	}
 	
-	public function showMoreBricks($blockId,$num=0){
+	public function showMoreBricks($blockId='NoWay',$num=0){
 		#点开checkBlock之后，点More弹出的窗口，显示更多bricks
 		$config['per_page'] = 12;//每页多少条
-		$data=$this->Mbrick->MFshowMoreBricks($blockId,$config['per_page'],$num);//用模型方法获取所需数据
+		
+		//用模型方法获取所需数据
+		$data=$this->Mbrick->MFshowMoreBricks($blockId,$config['per_page'],$num);
 		
 		if(!$data){	redirect('Cuser/logout');}//如果检查到不是本人的block，注销
 		
