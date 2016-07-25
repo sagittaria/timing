@@ -114,6 +114,10 @@ class Cuser extends CI_Controller {
 		$this->load->view('vuser/showMoreBricks',$data);
 		$this->load->view('footer');
 	}
+	
+	public function deleteBrick(){
+		echo $this->Mbrick->MFdeleteBrickGo();
+	}
 		
 	public function logout(){
 		#注销登录

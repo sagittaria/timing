@@ -58,4 +58,13 @@ class Mbrick extends CI_Model {
 		$info['total_rows'] = $this->db->where('blockId',$blockId)->from('brick')->count_all_results();#2.2.2 更新总条数
 		return $info;
 	}
+	
+	public function MFdeleteBrickGo(){
+		$brickId=$this->input->post('brickId');
+		if(!isset($brickId)){
+			return;
+		}else{
+			return $this->db->delete('brick',array('brickId'=>$brickId));
+		}
+	}
 }
