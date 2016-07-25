@@ -8,8 +8,8 @@ class Mblock extends CI_Model {
 	
     public function MFaddBlockGo(){
     	$data = array(
-    			'blockName' => $this->input->post('blockName'),
-    			'blockDescription' => $this->input->post('blockDescription'),
+    			'blockName' => str_replace('\'','*',$this->input->post('blockName')),
+    			'blockDescription' => str_replace('\'','*',$this->input->post('blockDescription')),
     			'blockFoundation' => time(),
     			'blockStatus' => 0,
     			'builderId' => $_SESSION['id']
@@ -47,8 +47,8 @@ class Mblock extends CI_Model {
     
     public function MFupdateBlockGo(){#更新Block信息
     	$data = array(
-    			'blockName' => $this->input->post('blockName'),
-    			'blockDescription' => $this->input->post('blockDescription'),
+    			'blockName' => str_replace('\'','*',$this->input->post('blockName')),
+    			'blockDescription' => str_replace('\'','*',$this->input->post('blockDescription')),
     			'blockStatus' => $this->input->post('blockStatus')
     	);
     	$blockId = $this->input->post('blockId');
