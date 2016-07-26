@@ -26,8 +26,8 @@
                     <?php echo form_open('Cuser/addBrick','id="newBrickForm" name="newBrickForm"'); ?>
 					<input type="text" name="brickStart" id="brickStart"/>
 						<script>
-						var today=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());//为了从前2天的零点开始，只能 var 一个零点的 today
-						$(function () {	$('#brickStart').datetimepicker({viewMode:'days', minDate:moment(today).subtract(2,'days').format('YYYY/MM/DD HH:mm'), defaultDate:new Date(), format:'YYYY/MM/DD HH:mm'});	});
+						var today=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());//为了从前7天的零点开始，只能 var 一个零点的 today
+						$(function () {	$('#brickStart').datetimepicker({viewMode:'days', minDate:moment(today).subtract(7,'days').format('YYYY/MM/DD HH:mm'), defaultDate:new Date(), format:'YYYY/MM/DD HH:mm'});	});
 						</script>
 					<input type="text" name="brickDuration"/>
 					<input type="text" name="brickContent"/>
