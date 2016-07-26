@@ -5,7 +5,7 @@
 ?>
 		<div class="input-group">
 		<form method="post"><input type="text" name="filterDate" id="filterDate">
-		<script> $(function () {	$('#filterDate').datetimepicker({viewMode:'days',maxDate:new Date()-2,format:'YYYY/MM/DD'});	});	</script>
+		<script> $(function () {	$('#filterDate').datetimepicker({viewMode:'days', maxDate:moment().format('YYYY/MM/DD'), format:'YYYY/MM/DD'});	});	</script>
 		<input type="submit" value="Filter"><?=$tips; ?></form>
 		</div>
 	<table class="table table-striped table-bordered">
