@@ -45,14 +45,14 @@ class Mbrick extends CI_Model {
 			if($info['total_rows']>0){#2.1.1判断总条数大于零，才查下去
 				$query = $this->db->order_by("brickStart desc")->having('brickStart <=',$timeStampUsedToFilter)->get_where('brick',array('blockId'=>$blockId),$per_page,$num);
 				$info['bricks']=$query->result_array(); #2.1.2查per_page条记录
-				$info['tips']=' Tips: bricks added before '.$filterDate.'.'; //显示该日及之前添加的brick
+				$info['tips']=' Bricks added before '.$filterDate.'.'; //显示该日及之前添加的brick
 				return $info;
 			}else{
-				$info['tips']=' Tips: no bricks added before '.$filterDate.' , displaying all.'; //过滤结果为空，于是显示全部
+				$info['tips']=' No brick added before '.$filterDate.' , displaying all.'; //过滤结果为空，于是显示全部
 			}
 		}
 		//2.2另两种情况：如果"不是过滤"，或者过滤下来总条数为零
-		if(!isset($info['tips'])){$info['tips']='';}
+		if(!isset($info['tips'])){$info['tips']='All Bricks in this Block';}
 		$query = $this->db->order_by("brickStart desc")->get_where('brick',array('blockId'=>$blockId),$per_page,$num);
 		$info['bricks']=$query->result_array();#2.2.1查per_page条记录
 		$info['total_rows'] = $this->db->where('blockId',$blockId)->from('brick')->count_all_results();#2.2.2 更新总条数

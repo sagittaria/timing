@@ -6,8 +6,9 @@
 		<div class="input-group">
 		<form method="post"><input type="text" name="filterDate" id="filterDate">
 		<script> $(function () {	$('#filterDate').datetimepicker({viewMode:'days', maxDate:moment().format('YYYY/MM/DD'), format:'YYYY/MM/DD'});	});	</script>
-		<input type="submit" value="Filter"><?=$tips; ?></form>
+		<input type="submit" value="Filter"> Tips: Leave it blank and press Filter to view all</form>
 		</div>
+		<span style="float:right;"><?=$tips; ?></span>
 	<table class="table table-striped table-bordered">
 	<tr class='success'><th>#</th><th>start</th><th>duration</th><th>content</th><th>OPs</th></tr>
 		<?php foreach($bricks as $brick){ ?>
