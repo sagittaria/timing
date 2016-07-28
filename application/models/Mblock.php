@@ -55,4 +55,14 @@ class Mblock extends CI_Model {
     	$this->db->where('blockId',$blockId);
     	return ($this->db->update('block',$data));
     }
+	
+	public function MFgetChartsData(){#抓取信息供ECharts生成图
+		$this->db->select('block.blockName as BlockName, sum(brickDuration) as TotalDuration');
+		$this->db->from('brick');
+		$this->db->join('block','brick.blockId=block.blockId');
+		$this->db->where('block.builderId',$_SESSION['id']);
+		$this->db->group_by('block.blockName');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }

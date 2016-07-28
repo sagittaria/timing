@@ -14,6 +14,100 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
+<div class="container">
+<div id="barTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<script>
+		var chartsData = <?php echo $chartsData;?>;
+		var chartsDataX=[];
+		var chartsDataY=[];
+		for(i=0;i<chartsData.length;i++){
+			chartsDataX.push(chartsData[i].BlockName);
+			chartsDataY.push(chartsData[i].TotalDuration);
+		}
+		
+        var myChart = echarts.init(document.getElementById('barTypeBlock'));
+        var option = {
+            title: {
+                text: 'Total duration, min.',
+				top: 'bottom',
+				left: 'center',
+            },
+            tooltip: {},
+            xAxis: {
+                data: chartsDataX,
+            },
+            yAxis: {},
+            series: [{
+                name: 'total',
+                type: 'bar',
+                data: chartsDataY,
+            }]
+        };
+        myChart.setOption(option);
+</script>
+<div id="pieTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<script>
+		var chartsData = <?php echo $chartsData;?>;
+		var chartsDataLengedData=[];
+		var chartsDataSeriesData=[];
+		for(i=0;i<chartsData.length;i++){
+			chartsDataLengedData.push(chartsData[i].BlockName);
+			var objNameValue={};
+			objNameValue.name=chartsData[i].BlockName;
+			objNameValue.value=chartsData[i].TotalDuration;
+			chartsDataSeriesData.push(objNameValue);
+		}
+		
+		var myChart = echarts.init(document.getElementById('pieTypeBlock'));
+		var option = {
+			title: {
+                text: 'Block ratio',
+				top: 'bottom',
+				left: 'center',
+            },
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				x: 'left',
+				y: 'center',
+				data:chartsDataLengedData,
+			},
+			series: [
+				{
+					name:'ratio',
+					type:'pie',
+					radius: ['40%', '65%'],
+					avoidLabelOverlap: false,
+					label: {
+						normal: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							show: true,
+							textStyle: {
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						}
+					},
+					labelLine: {
+						normal: {
+							show: false
+						}
+					},
+					data: chartsDataSeriesData,
+				}
+			]
+		};
+        myChart.setOption(option);
+</script>
+</div>
+
+	
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">

@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/bootstrap.min.css');?>" />
 	<link href="<?php echo base_url();?>public/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
+	<script src="<?php echo base_url('public/echarts.min.js');?>"></script>
   </head>
   <body>
   <span style="float:left"><?php echo $_SESSION['name'];?></span>
