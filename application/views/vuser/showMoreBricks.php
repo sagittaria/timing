@@ -10,10 +10,10 @@
 		</div>
 		<span style="float:right;"><?=$tips; ?></span>
 	<table class="table table-striped table-bordered">
-	<tr class='success'><th>#</th><th>start</th><th>duration</th><th>content</th><th>OPs</th></tr>
+	<tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th><th>OPs</th></tr>
 		<?php foreach($bricks as $brick){ ?>
 			<tr><td><?=$brick['brickId']; ?></td>
-				<td><?=date('Y/m/d h:i',$brick['brickStart']); ?></td>
+				<td><?=date('Y/m/d H:i',$brick['brickStart']); ?></td>
 				<td><?=$brick['brickDuration']; ?></td>
 				<td><?=$brick['brickContent']; ?></td>
 				<td><button class="btn btn-default" onclick="if(confirm('Are you sure?')){deleteThisBrick(<?=$brick['brickId']; ?>)}">Del</button></td></tr>

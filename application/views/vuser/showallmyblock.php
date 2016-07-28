@@ -20,7 +20,7 @@
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
-                    <h4 class= "modal-title">lay a brick</h4>
+                    <h4 class= "modal-title">Add a new Brick</h4>
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/addBrick','id="newBrickForm" name="newBrickForm"'); ?>
@@ -32,7 +32,7 @@
 					<input type="text" name="brickDuration"/>
 					<input type="text" name="brickContent"/>
 					<input type="text" name="blockId" id="blockId"/>
-					<input type="submit" value="Add a new Brick"/>
+					<input type="submit" value="lay a brick"/>
 					</form>
                </div>
                <div class= "modal-footer">
@@ -116,9 +116,9 @@ function blockCheck(intBlockID){//显示这个block里的brick
 			bricks = JSON.parse(response);
 			$('#checkBlockModal .modal-body *').remove();
  			if(bricks.length){
-				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>#</th><th>start</th><th>duration</th><th>content</th></tr></table>");
+				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th></tr></table>");
 				for(i=0;i<(bricks.length);i++){
-					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickId+"</td><td>"+bricks[i].brickStart+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
+					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickId+"</td><td>"+moment.unix(bricks[i].brickStart).format('YYYY/MM/DD HH:mm')+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
 				}
 				$('#checkBlockModal').modal('show');
 			}else{
