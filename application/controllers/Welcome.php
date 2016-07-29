@@ -64,6 +64,8 @@ class Welcome extends CI_Controller {
 			$_SESSION['id']=$user[0]['builderId'];
 			$_SESSION['name']=$user[0]['builderUsername'];
 			$_SESSION['email']=$user[0]['builderEmail'];
+			$this->load->model('Mbrick');
+			$this->Mbrick->MFupdateVoidBlock();#每次登陆更新Void block里的brick
 			redirect('Cuser/index');
 		}else{
 			echo "Invalid username or password";

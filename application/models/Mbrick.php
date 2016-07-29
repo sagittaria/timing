@@ -67,4 +67,8 @@ class Mbrick extends CI_Model {
 			return $this->db->delete('brick',array('brickId'=>$brickId));
 		}
 	}
+	
+	public function MFupdateVoidBlock(){
+		#每次登陆时更新brick表里的timer，用于计算自注册起经过了多少时间
+	}
 }
