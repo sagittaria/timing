@@ -105,6 +105,75 @@
 		};
         myChart.setOption(option);
 </script>
+<div id="lineTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<script>
+		//var chartsData = <?php echo $chartsData; ?> ;
+		//var chartsDataSeriesData=[];
+		//for(i=0;i<chartsData.length;i++){
+
+		//}
+		
+		var myChart = echarts.init(document.getElementById('lineTypeBlock'));
+		var option ={
+				title: {
+					text: 'Recent Happenings',
+					top:'bottom',
+					left:'center',
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				grid: {
+					top:'15%',
+					left:'1%',
+					right: '10%',
+					bottom: '13%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					boundaryGap: false,
+					data: ['-5','-4','-3','-2','-1']
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [
+					{
+						name:'邮件营销',
+						type:'line',
+						stack: '总量',
+						data:[1,134, 90, 230, 210]
+					},
+					{
+						name:'联盟广告',
+						type:'line',
+						stack: '总量',
+						data:[1,234, 290, 330, 310]
+					},
+					{
+						name:'视频广告',
+						type:'line',
+						stack: '总量',
+						data:[1,154, 190, 330, 410]
+					},
+					{
+						name:'直接访问',
+						type:'line',
+						stack: '总量',
+						data:[1,334, 390, 330, 320]
+					},
+					{
+						name:'搜索引擎',
+						type:'line',
+						stack: '总量',
+						data:[1,934, 1290, 1330, 1320]
+					}
+				]
+			};
+
+        myChart.setOption(option);
+</script>
 </div>
 
 	
