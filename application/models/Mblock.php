@@ -43,10 +43,10 @@ class Mblock extends CI_Model {
     		$this->db->insert('block', $data);
 			//-----------并顺便往brick表里加1条，作为计时器--------------------------------
 			$query = $this->db->select("blockId,blockFoundation")
-			->where(array('blockName'=>'void','builderId'=>$_SESSION['id']))
-			->order_by('blockFoundation asc')
-			->limit(1)
-			->get('block');
+					->where(array('blockName'=>'void','builderId'=>$_SESSION['id']))
+					->order_by('blockFoundation asc')
+					->limit(1)
+					->get('block');
 			$result = $query->result_array();
 			$blockIdUsedToInsertBrick = $result[0]['blockId'];
 			$data = array(

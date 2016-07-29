@@ -14,14 +14,8 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
-<div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
-		//var chartsData = <?php echo $chartsData; ?> ;
-		//var chartsDataSeriesData=[];
-		//for(i=0;i<chartsData.length;i++){
-
-		//}
-		
 		var myChart = echarts.init(document.getElementById('lineTypeCharts'));
 		var option ={
 				title: {
@@ -83,7 +77,10 @@
 
         myChart.setOption(option);
 </script>
-<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
@@ -93,7 +90,7 @@
 			chartsDataY.push(chartsData[i].TotalDuration);
 		}
 		
-        var myChart = echarts.init(document.getElementById('barTypeCharts'));
+        var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
         var option = {
             title: {
                 text: 'Total duration, min.',
@@ -113,7 +110,7 @@
         };
         myChart.setOption(option);
 </script>
-<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
@@ -126,7 +123,7 @@
 			chartsDataSeriesData.push(objNameValue);
 		}
 		
-		var myChart = echarts.init(document.getElementById('pieTypeCharts'));
+		var myChart = echarts.init(document.getElementById('pieTypeCharts-2'));
 		var option = {
 			title: {
                 text: 'Block ratio',
@@ -173,9 +170,6 @@
 		};
         myChart.setOption(option);
 </script>
-<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">

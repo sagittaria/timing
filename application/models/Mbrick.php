@@ -70,5 +70,23 @@ class Mbrick extends CI_Model {
 	
 	public function MFupdateVoidBlock(){
 		#每次登陆时更新brick表里的timer，用于计算自注册起经过了多少时间
+		$this->db->select("brickId, brickStart");
+		$this->db->from('brick');
+		$this->db->join('block','block.blockId=brick.blockId');
+		$this->db->join('builder','builder.builderId=block.builderId');
+		$this->db->where(array('brickContent'=>'timer',
+							   'blockName'=>'void',
+							   'block.builderId'=>$_SESSION['id'],
+							   ));
+		$this->db->order_by('blockFoundation asc,brickStart asc');
+		$this->db->limit(1);
+		$query = $this->db->get();
+		$result = $query->result_array();
+		$brickIdUsedToUpdateBrick = $result[0]['brickId'];
+		$data = array(
+				'brickDuration' => (time()-$result[0]['brickStart'])/60,
+		);
+		$this->db->where('brickId',$brickIdUsedToUpdateBrick);
+		$this->db->update('brick', $data);
 	}
 }
