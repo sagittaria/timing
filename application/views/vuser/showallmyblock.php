@@ -1,3 +1,5 @@
+<?php if(count($blocks) != 1) { ?>
+
 <table id="tableOfBlocks" border="1" style="width:100%;">
 <tr><th>blockId</th><th>name</th><th>description</th><th>foundation</th><th>status</th><th>onwerid</th><th>op1</th><th>op2</th><th>op3</th><th>op4</th></tr>
 <?php foreach($blocks as $block){ 
@@ -14,72 +16,113 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
+
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
-		var myChart = echarts.init(document.getElementById('lineTypeCharts'));
+		var chartsData = <?php echo $chartsData;?>;
+		var chartsDataX=[];
+		var chartsDataY=[];
+		for(i=0;i<chartsData.length;i++){
+			if(chartsData[i].BlockName=='void') continue;
+			chartsDataX.push(chartsData[i].BlockName);
+			chartsDataY.push(chartsData[i].TotalDuration);
+		}
+		
+        var myChart = echarts.init(document.getElementById('barTypeCharts'));
+        var option = {
+            title: {
+                text: 'Total duration, min.',
+				top: 'bottom',
+				left: 'center',
+            },
+            tooltip: {},
+            xAxis: {
+                data: chartsDataX,
+            },
+            yAxis: {},
+            series: [{
+                name: 'total',
+                type: 'bar',
+                data: chartsDataY,
+            }]
+        };
+        myChart.setOption(option);
+</script>
+<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<script>
+		var chartsData = <?php echo $chartsData;?>;
+		var chartsDataLengedData=[];
+		var chartsDataSeriesData=[];
+		for(i=0;i<chartsData.length;i++){
+			if(chartsData[i].BlockName=='void') continue;
+			chartsDataLengedData.push(chartsData[i].BlockName);
+			var objNameValue={};
+			objNameValue.name=chartsData[i].BlockName;
+			objNameValue.value=chartsData[i].TotalDuration;
+			chartsDataSeriesData.push(objNameValue);
+		}
+		
+		var myChart = echarts.init(document.getElementById('pieTypeCharts'));
+		var option = {
+			title: {
+                text: 'Block ratio',
+				top: 'bottom',
+				left: 'center',
+            },
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				x: 'left',
+				y: 'center',
+				data:chartsDataLengedData,
+			},
+			series: [
+				{
+					name:'ratio',
+					type:'pie',
+					radius: ['40%', '65%'],
+					avoidLabelOverlap: false,
+					label: {
+						normal: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							show: true,
+							textStyle: {
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						}
+					},
+					labelLine: {
+						normal: {
+							show: false
+						}
+					},
+					data: chartsDataSeriesData,
+				}
+			]
+		};
+        myChart.setOption(option);
+</script>
+<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<script>
+		var myChart = echarts.init(document.getElementById('lineTypeCharts-2'));
 		var option ={
 				title: {
-					text: 'Recent Happenings',
-					top:'bottom',
+					text: "I haven't decided...",
+					top:'center',
 					left:'center',
 				},
-				tooltip: {
-					trigger: 'axis'
-				},
-				grid: {
-					top:'15%',
-					left:'1%',
-					right: '10%',
-					bottom: '13%',
-					containLabel: true
-				},
-				xAxis: {
-					type: 'category',
-					boundaryGap: false,
-					data: ['-7','-6','-5','-4','-3','-2','-1']
-				},
-				yAxis: {
-					type: 'value'
-				},
-				series: [
-					{
-						name:'邮件营销',
-						type:'line',
-						stack: '总量',
-						data:[0, 34, 22, 13, 90, 30, 20]
-					},
-					{
-						name:'联盟广告',
-						type:'line',
-						stack: '总量',
-						data:[33, 12, 63, 32, 23, 50, 55]
-					},
-					{
-						name:'视频广告',
-						type:'line',
-						stack: '总量',
-						data:[0, 34, 12, 76, 45, 37, 15]
-					},
-					{
-						name:'直接访问',
-						type:'line',
-						stack: '总量',
-						data:[54, 87, 34, 12, 76, 51, 30]
-					},
-					{
-						name:'搜索引擎',
-						type:'line',
-						stack: '总量',
-						data:[46, 15, 64, 56, 41, 13, 108]
-					}
-				]
 			};
 
         myChart.setOption(option);
 </script>
-<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
@@ -93,7 +136,7 @@
         var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
         var option = {
             title: {
-                text: 'Total duration, min.',
+                text: 'Against void',
 				top: 'bottom',
 				left: 'center',
             },
@@ -126,7 +169,7 @@
 		var myChart = echarts.init(document.getElementById('pieTypeCharts-2'));
 		var option = {
 			title: {
-                text: 'Block ratio',
+                text: 'Struggling',
 				top: 'bottom',
 				left: 'center',
             },
@@ -316,3 +359,7 @@ function ajaxBlockDelete(BlockID){
 }
 
 </script>
+
+<?php }else{ ?>
+	please <a href='<?php echo site_url('Cuser/addBlock');?>'>add a block</a> first.
+<?php } ?>

@@ -20,6 +20,7 @@ class Cuser extends CI_Controller {
 		#用户首页，显示各 block 的状态和累积时长
 		$data['blocks']=$this->Mblock->MFgetAllMyBlocks();
 		$data['chartsData']=json_encode($this->Mblock->MFgetChartsData());
+		$data['chartsDataForLineType']=json_encode($this->Mblock->MFgetChartsDataForLineType());
 		$this->load->view('header');
 		$this->load->view('vuser/showallmyblock',$data);
 		$this->load->view('footer');
