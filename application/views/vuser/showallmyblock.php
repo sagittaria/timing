@@ -14,8 +14,8 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
-<div class="container">
-<div id="barTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+
+<div id="barTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
@@ -45,7 +45,7 @@
         };
         myChart.setOption(option);
 </script>
-<div id="pieTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<div id="pieTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
@@ -105,7 +105,7 @@
 		};
         myChart.setOption(option);
 </script>
-<div id="lineTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<div id="lineTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 <script>
 		//var chartsData = <?php echo $chartsData; ?> ;
 		//var chartsDataSeriesData=[];
@@ -133,7 +133,7 @@
 				xAxis: {
 					type: 'category',
 					boundaryGap: false,
-					data: ['-5','-4','-3','-2','-1']
+					data: ['-7','-6','-5','-4','-3','-2','-1']
 				},
 				yAxis: {
 					type: 'value'
@@ -143,38 +143,38 @@
 						name:'邮件营销',
 						type:'line',
 						stack: '总量',
-						data:[1,134, 90, 230, 210]
+						data:[12, 34, 22, 13, 90, 30, 20]
 					},
 					{
 						name:'联盟广告',
 						type:'line',
 						stack: '总量',
-						data:[1,234, 290, 330, 310]
+						data:[33, 12, 63, 32, 23, 50, 55]
 					},
 					{
 						name:'视频广告',
 						type:'line',
 						stack: '总量',
-						data:[1,154, 190, 330, 410]
+						data:[66, 34, 12, 76, 45, 37, 15]
 					},
 					{
 						name:'直接访问',
 						type:'line',
 						stack: '总量',
-						data:[1,334, 390, 330, 320]
+						data:[54, 87, 34, 12, 76, 51, 30]
 					},
 					{
 						name:'搜索引擎',
 						type:'line',
 						stack: '总量',
-						data:[1,934, 1290, 1330, 1320]
+						data:[46, 15, 64, 56, 41, 13, 108]
 					}
 				]
 			};
 
         myChart.setOption(option);
 </script>
-</div>
+
 
 	
 
