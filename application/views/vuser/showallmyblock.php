@@ -17,8 +17,66 @@
 	</tr><?php } ?>
 </table>
 
-<div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<script>
+		var xData=[];
+		var yData=[];
+		var chartsData = <?php echo $chartsDataForLineType;?>;
+		//alert(chartsData.length);
+		for(i=0;i<30;i++){
+			xData.push(i-30);
+			if(typeof(chartsData[i])=="undefined"){
+				yData.push(0);
+			}else{
+				yData.push(chartsData[i].brickDuration);
+			}			
+		}
+		yData.reverse();
+		//alert(xData.length);
+		//alert(yData.length);
+		
+       var myChart = echarts.init(document.getElementById('lineTypeCharts'));
+       option = {
+			title: {
+				text: 'Base line',
+				x:'center',
+				y:'bottom',
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '13%',
+				containLabel: true
+			},
+			xAxis: {
+				type: 'category',
+				boundaryGap: false,
+				data: xData
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [
+				{
+					name:'Last 30 bricks',
+					type:'line',
+					itemStyle:{
+						normal:{
+							lineStyle:{
+								color:'#ff4dff',
+							}
+						}
+					},
+					data:yData
+				}
+			]
+		};
+        myChart.setOption(option);
+</script>
+<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
@@ -45,11 +103,20 @@
                 name: 'total',
                 type: 'bar',
                 data: chartsDataY,
+				itemStyle: {
+					normal: {
+						color: function(params) {
+							// build a color map as needed.
+							var colorList = ['#c23531','#2f4554','#61a0a8','#d48265','#91c7ae','#749f83','#ca8622','#bda29a','#6e7074','#546570','#c4ccd3'];
+							return colorList[params.dataIndex]
+						}
+					}
+                }
             }]
         };
         myChart.setOption(option);
 </script>
-<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
@@ -110,20 +177,20 @@
 		};
         myChart.setOption(option);
 </script>
-<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var myChart = echarts.init(document.getElementById('lineTypeCharts-2'));
 		var option ={
 				title: {
-					text: "I haven't decided...",
-					top:'center',
+					text: "Not decided yet...",
+					top:'bottom',
 					left:'center',
 				},
 			};
 
         myChart.setOption(option);
 </script>
-<div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
@@ -149,11 +216,20 @@
                 name: 'total',
                 type: 'bar',
                 data: chartsDataY,
+				itemStyle: {
+					normal: {
+						color: function(params) {
+							// build a color map as your need.
+							var colorList = ['#c23531','#2f4554','#61a0a8','#d48265','#91c7ae','#749f83','#ca8622','#bda29a','#6e7074','#546570','#c4ccd3'];
+							return colorList[params.dataIndex]
+						}
+					}
+                }				
             }]
         };
         myChart.setOption(option);
 </script>
-<div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
@@ -213,6 +289,8 @@
 		};
         myChart.setOption(option);
 </script>
+<div style="clear:both;"></div><br>
+<span style="float:right">Note: the 'QUANTITY' of void-block shows how long it has been since you signed up.</span>
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">
