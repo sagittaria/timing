@@ -14,8 +14,76 @@
 		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
 </table>
+<div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
+<script>
+		//var chartsData = <?php echo $chartsData; ?> ;
+		//var chartsDataSeriesData=[];
+		//for(i=0;i<chartsData.length;i++){
 
-<div id="barTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+		//}
+		
+		var myChart = echarts.init(document.getElementById('lineTypeCharts'));
+		var option ={
+				title: {
+					text: 'Recent Happenings',
+					top:'bottom',
+					left:'center',
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				grid: {
+					top:'15%',
+					left:'1%',
+					right: '10%',
+					bottom: '13%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					boundaryGap: false,
+					data: ['-7','-6','-5','-4','-3','-2','-1']
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [
+					{
+						name:'邮件营销',
+						type:'line',
+						stack: '总量',
+						data:[0, 34, 22, 13, 90, 30, 20]
+					},
+					{
+						name:'联盟广告',
+						type:'line',
+						stack: '总量',
+						data:[33, 12, 63, 32, 23, 50, 55]
+					},
+					{
+						name:'视频广告',
+						type:'line',
+						stack: '总量',
+						data:[0, 34, 12, 76, 45, 37, 15]
+					},
+					{
+						name:'直接访问',
+						type:'line',
+						stack: '总量',
+						data:[54, 87, 34, 12, 76, 51, 30]
+					},
+					{
+						name:'搜索引擎',
+						type:'line',
+						stack: '总量',
+						data:[46, 15, 64, 56, 41, 13, 108]
+					}
+				]
+			};
+
+        myChart.setOption(option);
+</script>
+<div id="barTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
@@ -25,7 +93,7 @@
 			chartsDataY.push(chartsData[i].TotalDuration);
 		}
 		
-        var myChart = echarts.init(document.getElementById('barTypeBlock'));
+        var myChart = echarts.init(document.getElementById('barTypeCharts'));
         var option = {
             title: {
                 text: 'Total duration, min.',
@@ -45,7 +113,7 @@
         };
         myChart.setOption(option);
 </script>
-<div id="pieTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="pieTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
@@ -58,7 +126,7 @@
 			chartsDataSeriesData.push(objNameValue);
 		}
 		
-		var myChart = echarts.init(document.getElementById('pieTypeBlock'));
+		var myChart = echarts.init(document.getElementById('pieTypeCharts'));
 		var option = {
 			title: {
                 text: 'Block ratio',
@@ -105,78 +173,9 @@
 		};
         myChart.setOption(option);
 </script>
-<div id="lineTypeBlock" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
-<script>
-		//var chartsData = <?php echo $chartsData; ?> ;
-		//var chartsDataSeriesData=[];
-		//for(i=0;i<chartsData.length;i++){
-
-		//}
-		
-		var myChart = echarts.init(document.getElementById('lineTypeBlock'));
-		var option ={
-				title: {
-					text: 'Recent Happenings',
-					top:'bottom',
-					left:'center',
-				},
-				tooltip: {
-					trigger: 'axis'
-				},
-				grid: {
-					top:'15%',
-					left:'1%',
-					right: '10%',
-					bottom: '13%',
-					containLabel: true
-				},
-				xAxis: {
-					type: 'category',
-					boundaryGap: false,
-					data: ['-7','-6','-5','-4','-3','-2','-1']
-				},
-				yAxis: {
-					type: 'value'
-				},
-				series: [
-					{
-						name:'邮件营销',
-						type:'line',
-						stack: '总量',
-						data:[12, 34, 22, 13, 90, 30, 20]
-					},
-					{
-						name:'联盟广告',
-						type:'line',
-						stack: '总量',
-						data:[33, 12, 63, 32, 23, 50, 55]
-					},
-					{
-						name:'视频广告',
-						type:'line',
-						stack: '总量',
-						data:[66, 34, 12, 76, 45, 37, 15]
-					},
-					{
-						name:'直接访问',
-						type:'line',
-						stack: '总量',
-						data:[54, 87, 34, 12, 76, 51, 30]
-					},
-					{
-						name:'搜索引擎',
-						type:'line',
-						stack: '总量',
-						data:[46, 15, 64, 56, 41, 13, 108]
-					}
-				]
-			};
-
-        myChart.setOption(option);
-</script>
-
-
-	
+<div id="lineTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="barTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
+<div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;border:1px solid red;"></div>
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">
