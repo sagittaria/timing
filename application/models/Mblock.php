@@ -14,6 +14,7 @@ class Mblock extends CI_Model {
     			'blockStatus' => 0,
     			'builderId' => $_SESSION['id']
     	);
+		if($data['blockName']=="void") $data['blockName']="void".time();//禁止用户使用“void”这个名称
     	
     	return $this->db->insert('block', $data);
     }
@@ -67,6 +68,7 @@ class Mblock extends CI_Model {
     			'blockDescription' => str_replace('\'','*',$this->input->post('blockDescription')),
     			'blockStatus' => $this->input->post('blockStatus')
     	);
+		if($data['blockName']=="void") $data['blockName']="void".time();//禁止用户使用“void”这个名称
     	$blockId = $this->input->post('blockId');
     	$this->db->where('blockId',$blockId);
     	return ($this->db->update('block',$data));
