@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('public/echarts.min.js');?>"></script>
   </head>
-  <body>
+  <body><div class="container"><!--《/div》在footer里-->
   <span style="float:left"><?php echo $_SESSION['name'];?></span>
   <a href='<?php echo site_url('Cuser/addBlock');?>' style="float:left;">-----addBlock</a>
   <a href='<?php echo site_url('Cuser/logout');?>' style="float:right;">Logout</a>

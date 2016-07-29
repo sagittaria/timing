@@ -1,4 +1,4 @@
-
+	</div><!--匹配header里的《div class="container"》-->
 	<script src="<?php echo base_url('public/js/bootstrap.min.js');?>" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>public/moment.js"></script>
 	<script src="<?php echo base_url();?>public/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
