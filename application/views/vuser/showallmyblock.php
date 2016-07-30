@@ -195,11 +195,15 @@
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataX=[];
 		var chartsDataY=[];
+		var countAll = 0;
 		for(i=0;i<chartsData.length;i++){
 			chartsDataX.push(chartsData[i].BlockName);
 			chartsDataY.push(chartsData[i].TotalDuration);
+			countAll = countAll + parseInt(chartsData[i].TotalDuration);
 		}
-		
+		countAll = countAll - parseInt(chartsDataY[((chartsDataY.length)-1)]);
+		chartsDataY[((chartsData.length)-1)] = parseInt(chartsDataY[((chartsData.length)-1)])- countAll;
+		if(parseInt(chartsDataY[((chartsData.length)-1)])<0) chartsDataY[((chartsData.length)-1)] = 0;
         var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
         var option = {
             title: {
