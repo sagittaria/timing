@@ -4,12 +4,12 @@
 <tr><th>blockId</th><th>name</th><th>description</th><th>foundation</th><th>status</th><th>onwerid</th><th>op1</th><th>op2</th><th>op3</th><th>op4</th></tr>
 <?php foreach($blocks as $block){ 
 	if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
-	<tr><td><?= $block['blockId']; ?></td>
-		<td><?= $block['blockName']; ?></td>
-		<td><?= $block['blockDescription']; ?></td>
-		<td><?= $block['blockFoundation']; ?></td>
-		<td><?= $block['blockStatus']; ?></td>
-		<td><?= $block['builderId']; ?></td>
+	<tr><td><?php echo  $block['blockId']; ?></td>
+		<td><?php echo  $block['blockName']; ?></td>
+		<td><?php echo  $block['blockDescription']; ?></td>
+		<td><?php echo  $block['blockFoundation']; ?></td>
+		<td><?php echo  $block['blockStatus']; ?></td>
+		<td><?php echo  $block['builderId']; ?></td>
 		<td><button onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button></td>
 		<td><button onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button></td>
 		<td><button onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button></td>
@@ -387,7 +387,7 @@ function blockCheck(intBlockID){//显示这个block里的brick
 	$('#blockIdUsedToShowMoreBricks').val(intBlockID);
 	$.ajax({
 		type:'post',
-		url:'<?php echo site_url('CUser/checkBlock'); ?>',
+		url:'checkBlock',
 		data:{BlockId:intBlockID},
 		success:function(response,status,xhr){
 			bricks = JSON.parse(response);

@@ -8,15 +8,15 @@
 		<script> $(function () {	$('#filterDate').datetimepicker({viewMode:'days', maxDate:moment().format('YYYY/MM/DD'), format:'YYYY/MM/DD'});	});	</script>
 		<input type="submit" value="Filter"> Tips: Leave it blank and press Filter to view all</form>
 		</div>
-		<span style="float:right;"><?=$tips; ?></span>
+		<span style="float:right;"><?php echo $tips; ?></span>
 	<table class="table table-striped table-bordered">
 	<tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th><th>OPs</th></tr>
 		<?php foreach($bricks as $brick){ ?>
-			<tr><td><?=$brick['brickId']; ?></td>
-				<td><?=date('Y/m/d H:i',$brick['brickStart']); ?></td>
-				<td><?=$brick['brickDuration']; ?></td>
-				<td><?=$brick['brickContent']; ?></td>
-				<td><button class="btn btn-default" onclick="if(confirm('Are you sure?')){deleteThisBrick(<?=$brick['brickId']; ?>)}">Del</button></td></tr>
+			<tr><td><?php echo $brick['brickId']; ?></td>
+				<td><?php echo date('Y/m/d H:i',$brick['brickStart']); ?></td>
+				<td><?php echo $brick['brickDuration']; ?></td>
+				<td><?php echo $brick['brickContent']; ?></td>
+				<td><button class="btn btn-default" onclick="if(confirm('Are you sure?')){deleteThisBrick(<?php echo $brick['brickId']; ?>)}">Del</button></td></tr>
 		<?php } ?>
 	</table>
 		
