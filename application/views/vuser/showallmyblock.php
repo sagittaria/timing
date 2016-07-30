@@ -238,13 +238,18 @@
 		var chartsData = <?php echo $chartsData;?>;
 		var chartsDataLengedData=[];
 		var chartsDataSeriesData=[];
+		var countAll = 0;
 		for(i=0;i<chartsData.length;i++){
 			chartsDataLengedData.push(chartsData[i].BlockName);
 			var objNameValue={};
 			objNameValue.name=chartsData[i].BlockName;
 			objNameValue.value=chartsData[i].TotalDuration;
+			countAll = countAll + parseInt(chartsData[i].TotalDuration);
 			chartsDataSeriesData.push(objNameValue);
 		}
+		countAll = countAll - parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value);
+		chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value = parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value)- countAll;
+		if(parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value)<0) chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value = 0;		
 		
 		var myChart = echarts.init(document.getElementById('pieTypeCharts-2'));
 		var option = {
