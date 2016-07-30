@@ -24,7 +24,7 @@
 		function deleteThisBrick(brickId){
 			$.ajax({//异步删brick
 				type:'post',
-				url:'<?php echo site_url('CUser/deleteBrick'); ?>',
+				url:'../../deleteBrick',
 				data:{brickId:brickId},
 				success:function(response,status,xhr){
 					if(response==1){alert('succeed');location.reload();}
