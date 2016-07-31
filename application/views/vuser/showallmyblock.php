@@ -299,7 +299,7 @@
         myChart.setOption(option);
 </script>
 <div style="clear:both;"></div><br>
-<span style="float:right">Note: the QUANTITY of void-block shows how long it has been since you signed up.</span>
+<span style="float:right">Note: Void-block represents the QUANTITY of unrecorded time period since you signed up.</span>
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog">
