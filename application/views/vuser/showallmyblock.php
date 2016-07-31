@@ -38,7 +38,7 @@
        var myChart = echarts.init(document.getElementById('lineTypeCharts'));
        option = {
 			title: {
-				text: 'Base line',
+				text: 'Base line, min.',
 				x:'center',
 				y:'bottom',
 			},
@@ -84,17 +84,21 @@
 		for(i=0;i<chartsData.length;i++){
 			if(chartsData[i].BlockName=='void') continue;
 			chartsDataX.push(chartsData[i].BlockName);
-			chartsDataY.push(chartsData[i].TotalDuration);
+			chartsDataY.push((chartsData[i].TotalDuration/60).toFixed(2));
 		}
 		
         var myChart = echarts.init(document.getElementById('barTypeCharts'));
         var option = {
             title: {
-                text: 'Total duration, min.',
+                text: 'Total duration, hr.',
 				top: 'bottom',
 				left: 'center',
             },
             tooltip: {},
+	    grid:{
+		left:45,
+		right:'auto',
+	    },
             xAxis: {
                 data: chartsDataX,
             },
@@ -143,7 +147,7 @@
 			},
 			legend: {
 				orient: 'vertical',
-				x: 'left',
+				x: 'right',
 				y: 'center',
 				data:chartsDataLengedData,
 			},
@@ -204,6 +208,9 @@
 		countAll = countAll - parseInt(chartsDataY[((chartsDataY.length)-1)]);
 		chartsDataY[((chartsData.length)-1)] = parseInt(chartsDataY[((chartsData.length)-1)])- countAll;
 		if(parseInt(chartsDataY[((chartsData.length)-1)])<0) chartsDataY[((chartsData.length)-1)] = 0;
+		for(i=0;i<chartsDataY.length;i++)
+			chartsDataY[i] = (chartsDataY[i]/60).toFixed(2);
+
         var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
         var option = {
             title: {
@@ -212,6 +219,10 @@
 				left: 'center',
             },
             tooltip: {},
+	    grid:{
+		left:45,
+		right:'auto',
+	    },
             xAxis: {
                 data: chartsDataX,
             },
@@ -264,7 +275,7 @@
 			},
 			legend: {
 				orient: 'vertical',
-				x: 'left',
+				x: 'right',
 				y: 'center',
 				data:chartsDataLengedData,
 			},
