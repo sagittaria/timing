@@ -1,21 +1,20 @@
 <?php if(count($blocks) != 1) { ?>
 
-<table id="tableOfBlocks" border="1" style="width:100%;">
-<tr><th>blockId</th><th>name</th><th>description</th><th>foundation</th><th>status</th><th>onwerid</th><th>op1</th><th>op2</th><th>op3</th><th>op4</th></tr>
-<?php foreach($blocks as $block){ 
+<div class="container"><div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"><table id="tableOfBlocks" class="table table-bordered" >
+<tr class="warning"><th>Name</th><th>Description</th><th>Foundation</th><th>Status</th><th>Ops</th></tr>
+<?php  foreach($blocks as $block){ 
 	if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
-	<tr><td><?php echo  $block['blockId']; ?></td>
-		<td><?php echo  $block['blockName']; ?></td>
+	<tr>	<td><?php echo  $block['blockName']; ?></td>
 		<td><?php echo  $block['blockDescription']; ?></td>
-		<td><?php echo  $block['blockFoundation']; ?></td>
-		<td><?php echo  $block['blockStatus']; ?></td>
-		<td><?php echo  $block['builderId']; ?></td>
-		<td><button onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button></td>
-		<td><button onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button></td>
-		<td><button onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button></td>
-		<td><button onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
+		<td><?php echo date('Y/m/d H:i',$block['blockFoundation']); ?></td>
+		<td><?php if($block['blockStatus']==1){ echo 'Sleep';}else{echo 'Active';} ?></td>		
+		<td><button class="btn btn-warning btn-xs" onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button>
+		    <button class="btn btn-success btn-xs" onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button>
+		    <button class="btn btn-info btn-xs" onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button>
+		    <button class="btn btn-danger btn-xs" onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
 	</tr><?php } ?>
-</table>
+</table></div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here is some informative words.</div></div>
 
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
@@ -83,6 +82,7 @@
 		var chartsDataY=[];
 		for(i=0;i<chartsData.length;i++){
 			if(chartsData[i].BlockName=='void') continue;
+			if(chartsData[i].BlockStatus==1) continue;
 			chartsDataX.push(chartsData[i].BlockName);
 			chartsDataY.push((chartsData[i].TotalDuration/60).toFixed(2));
 		}
@@ -127,6 +127,7 @@
 		var chartsDataSeriesData=[];
 		for(i=0;i<chartsData.length;i++){
 			if(chartsData[i].BlockName=='void') continue;
+			if(chartsData[i].BlockStatus==1) continue;
 			chartsDataLengedData.push(chartsData[i].BlockName);
 			var objNameValue={};
 			objNameValue.name=chartsData[i].BlockName;

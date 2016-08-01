@@ -76,7 +76,7 @@ class Mblock extends CI_Model {
     }
 	
 	public function MFgetChartsData(){#抓取信息供ECharts生成图
-		$this->db->select('block.blockName as BlockName, sum(brickDuration) as TotalDuration');
+		$this->db->select('block.blockName as BlockName, block.blockStatus as BlockStatus, sum(brickDuration) as TotalDuration');
 		$this->db->from('brick');
 		$this->db->order_by('brick.blockId desc');
 		$this->db->join('block','brick.blockId=block.blockId');
