@@ -1,7 +1,7 @@
 <?php if(count($blocks) != 1) { ?>
 
 <div class="container"><div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"><table id="tableOfBlocks" class="table table-bordered" >
-<tr class="warning"><th>Name</th><th>Description</th><th>Foundation</th><th>Status</th><th>Ops</th></tr>
+<tr class="warning"><th>Name</th><th>Description</th><th style="width:140px;">Foundation</th><th style="width:65px;">Status</th><th style="width:220px;">Ops</th></tr>
 <?php  foreach($blocks as $block){ 
 	if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
 	<tr>	<td><?php echo  $block['blockName']; ?></td>
