@@ -27,7 +27,8 @@ class Welcome extends CI_Controller {
 		$this->form_validation->set_rules('builderUsername', 'Username', 'required|trim|min_length[5]|max_length[20]|callback_validUsername['.$un.']');
 		$this->form_validation->set_rules('builderPassword', 'Password', 'required|min_length[6]');
 		$this->form_validation->set_rules('builderEmail', 'Email', 'trim|required|valid_email|callback_validEmail['.$em.']');
-		
+		$this->form_validation->set_error_delimiters('<span style="color:red;font-size:12px;">','</span>');
+
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('register');//如果没通过检查，就显示注册页面
 		}else{   //如果通过检查的话调用 模型的 MFregister()方法注册

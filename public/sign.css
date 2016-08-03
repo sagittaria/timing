@@ -1,0 +1,52 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-sign {
+  max-width: 300px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color:white;
+  border:1px solid #a4a4c1;
+  border-radius:4px;
+}
+.form-sign .form-sign-heading {
+  margin-bottom: 18px;
+}
+.form-sign .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 7px;
+  font-size: 13px;
+}
+.form-sign .form-control:focus {
+  z-index: 2;
+}
+.form-sign .sign-in {
+  margin-bottom:8px;
+}
+.form-sign button {
+  margin-top:20px;
+  margin-bottom:7px;
+}
+.form-sign label{
+  font-size:13px;
+  font-weight:normal;
+}
+/*
+.form-sign input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-sign input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+*/
