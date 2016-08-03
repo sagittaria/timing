@@ -16,7 +16,7 @@
 				<td><?php echo date('Y/m/d H:i',$brick['brickStart']); ?></td>
 				<td><?php echo $brick['brickDuration']; ?></td>
 				<td><?php echo $brick['brickContent']; ?></td>
-				<td><button class="btn btn-default" onclick="if(confirm('Are you sure?')){deleteThisBrick(<?php echo $brick['brickId']; ?>)}">Del</button></td></tr>
+				<td><button class="btn btn-default btn-xs" onclick="if(confirm('Are you sure?')){deleteThisBrick(<?php echo $brick['brickId']; ?>)}">Del</button></td></tr>
 		<?php } ?>
 	</table>
 		
