@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h4 class="form-signin-heading">Sign in to Timing</h4>
 		<input type="text" name="builderUsername" value="<?php echo set_value('builderUsername'); ?>" class="form-control" placeholder="Username" required autofocus>
 		<input type="password" name="builderPassword" class="form-control" placeholder="Password" required>
-		<button type="submit" class="btn btn-primary btn-block">Go ~</button>
-		<p style="margin-top:7px;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
+		<button type="submit" class="btn btn-primary btn-block">Sign in</button>
+		<p style="text-align:center;margin-top:7px;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
 	</form>
 
     </div> <!-- /container -->
