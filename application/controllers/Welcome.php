@@ -13,15 +13,23 @@ class Welcome extends CI_Controller {
 	
 	public function index(){
 		#显示登录界面
-		$this->load->helper('form');
-		$this->load->view('login');
+		$this->load->helper('cookie');
+		$this->load->helper('form');	
+		$data['cookieUsername']=get_cookie('builderUsername');
+		if(isset($data['cookieUsername'])){
+		    $this->load->view('login',$data);
+		    delete_cookie('builderUsername');
+		}else{
+		    $this->load->view('login');
+		}
+		
 	}
 	
 	public function register(){
 		#新用户注册
 		$this->load->helper('form');
+		$this->load->helper('cookie');
 		$this->load->library('form_validation');
-
 		$un=$this->input->post('builderUsername');
 		$em=$this->input->post('builderEmail');
 		$this->form_validation->set_rules('builderUsername', 'Username', 'required|trim|min_length[5]|max_length[20]|callback_validUsername['.$un.']');
@@ -33,8 +41,10 @@ class Welcome extends CI_Controller {
 			$this->load->view('register');//如果没通过检查，就显示注册页面
 		}else{   //如果通过检查的话调用 模型的 MFregister()方法注册
 			if($this->Mbuilder->MFregister()){
-				echo "Welcome, ".$un.". Click to <a href='".site_url()."'> Sign In</a> (redirecting in 2 seconds...)";
-				echo "<script>setTimeout('location=\"".site_url()."\"',1600);</script>";				
+				set_cookie('builderUsername',$un,time()+6);
+				echo "Welcome, ".$un.". Click to <a href='".site_url()."'>Sign In</a> (redirecting in 2 seconds...)";
+				echo "<script>setTimeout('location=\"".site_url()."\"',1600);</script>";
+				
 			}else{
 				echo "somehow failed, please try again T^T";
 			}
