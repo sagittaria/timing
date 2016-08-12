@@ -9,7 +9,7 @@ class Welcome extends CI_Controller {
         //$this->load->model('Mblock');
         $this->load->helper('url');
         $this->load->library('session');
-    }
+        }
 	
 	public function index(){
 		#显示登录界面

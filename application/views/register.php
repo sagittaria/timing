@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		if(username.length < 5){ warn('Username too short.');return false; }
 		if(password.length < 6){ warn('Password at least 6 chars.');return false; }
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    		if(!re.test(email)){ warn('incorrect Email address.'); return false;}
+    		if(!re.test(email)){ warn('invalid Email address.'); return false;}
 
 		return true;
 		
