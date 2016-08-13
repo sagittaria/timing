@@ -353,10 +353,10 @@
                  <table id="tableOfBricks" class="table table-striped table-bordered">
 				 <!-- 将由JS填充此表格 -->
 				 </table>
-		 </div>
+		</div>
 		 <div class="modal-footer">
 		    <input type="hidden" id="blockIdUsedToShowMoreBricks">
-                    <button onclick="location.href='<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0'" class= "btn btn-default">More...</button>
+                    <button onclick="location.href='<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0'" class= "btn btn-default" style="width:100%">More...</button>
                </div>
            </div>
      </div >
