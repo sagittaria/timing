@@ -16,7 +16,7 @@
 	</tr><?php } ?>
 </tbody>
 </table></div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here is some informative words.</div></div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here are some statistic numbers.</div></div>
 
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
