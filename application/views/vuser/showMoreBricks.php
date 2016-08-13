@@ -14,7 +14,7 @@
 	    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 		<span style="float:right;"><?php echo $tips; ?></span>
 		<table class="table table-striped table-bordered">
-		<tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th><th>OPs</th></tr>
+		<tr class='success'><th style="width:7%">#</th><th style="width:25%">start</th><th style="width:20%">duration, min.</th><th style="width:40%">content</th><th>OPs</th></tr>
 			<?php $cnt=0; foreach($bricks as $brick){ ?>
 				<tr><td><?php /*echo $brick['brickId'];*/ echo ++$cnt;  ?></td>
 					<td><?php echo date('Y/m/d H:i',$brick['brickStart']); ?></td>
