@@ -356,7 +356,7 @@
 		 </div>
 		 <div class="modal-footer">
 		    <input type="hidden" id="blockIdUsedToShowMoreBricks">
-                    <button onclick="window.open('<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0')" class= "btn btn-default">More...</button>
+                    <button onclick="location.href='<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0'" class= "btn btn-default">More...</button>
                </div>
            </div>
      </div >
