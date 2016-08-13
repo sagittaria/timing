@@ -353,9 +353,9 @@
                  <table id="tableOfBricks" class="table table-striped table-bordered">
 				 <!-- 将由JS填充此表格 -->
 				 </table>
-               </div>
-               <div class= "modal-footer">
-					<input type="text" id="blockIdUsedToShowMoreBricks">
+		 </div>
+		 <div class="modal-footer">
+		    <input type="hidden" id="blockIdUsedToShowMoreBricks">
                     <button onclick="window.open('<?php echo site_url('Cuser/showMoreBricks');?>'+'/'+$('#blockIdUsedToShowMoreBricks').val()+'/0')" class= "btn btn-default">More...</button>
                </div>
            </div>
@@ -416,9 +416,11 @@ function blockCheck(intBlockID){//显示这个block里的brick
 			bricks = JSON.parse(response);
 			$('#checkBlockModal .modal-body *').remove();
  			if(bricks.length){
-				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th></tr></table>");
+				//$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th>#</th><th>start</th><th>duration, min.</th><th>content</th></tr></table>");
+				$('#checkBlockModal .modal-body').append("<table id='tableOfBricks' class='table table-striped table-bordered'><tr class='success'><th style='width:28%'>start</th><th style='width:23%'>duration, min.</th><th>content</th></tr></table>");
 				for(i=0;i<(bricks.length);i++){
-					$('#tableOfBricks').append("<tr><td>"+bricks[i].brickId+"</td><td>"+moment.unix(bricks[i].brickStart).format('YYYY/MM/DD HH:mm')+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
+					//$('#tableOfBricks').append("<tr><td>"+bricks[i].brickId+"</td><td>"+moment.unix(bricks[i].brickStart).format('YYYY/MM/DD HH:mm')+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
+					$('#tableOfBricks').append("<tr><td>"+moment.unix(bricks[i].brickStart).format('YYYY/MM/DD HH:mm')+"</td><td>"+bricks[i].brickDuration+"</td><td>"+bricks[i].brickContent+"</td></tr>");
 				}
 				$('#checkBlockModal').modal('show');
 			}else{
