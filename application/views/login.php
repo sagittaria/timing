@@ -31,8 +31,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script>
 	function signin(){
 		var username=$('[name=builderUsername]').val().trim() || '';
-		var password=$('[name=builderpassword]').val() || '';
-		if(username.length===0 || password.length===0){ $('.alert').hide(); $('.alert').html('Incorrect username or password.').show();return; }else{ $('.alert').hide();$('#loginForm').submit(); }
+		var password=$('[name=builderPassword]').val() || '';
+		if(username.length===0 || password.length===0){ 
+			$('.alert').hide();
+			$('.alert').html('Incorrect username or password.').show();
+			return;
+		}else{
+			$('.alert').hide();
+			$('#loginForm').submit();
+		}
 	}
     </script>
 
