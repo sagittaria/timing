@@ -19,13 +19,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h4 class="form-sign-heading" style="text-align:center;">Sign in to Timing</h4>
 		<input type="text" name="builderUsername" value="<?php if(isset($cookieUsername)){echo htmlspecialchars($cookieUsername);} ?><?php echo set_value('builderUsername'); ?>" class="form-control sign-in" placeholder="Username" required autofocus>
 		<input type="password" name="builderPassword" class="form-control sign-in" placeholder="Password" required>
-		<button type="submit" class="btn btn-primary btn-block">Continue</button>
+		<a class="btn btn-primary btn-block" onclick="signin()">Continue</a>
 		<p style="text-align:center;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
+		<div class="alert alert-danger" style="display:none;"></div>
 	</form>
 
     </div> <!-- /container -->
 
     <script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
-	<script src="<?php echo base_url('public/js/bootstrap.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('public/js/bootstrap.min.js');?>" type="text/javascript"></script>
+    <script>
+	function signin(){
+		var username=$('[name=builderUsername]').val().trim() || '';
+		var password=$('[name=builderpassword]').val() || '';
+		if(username.length===0 || password.length===0){ $('.alert').hide(); $('.alert').html('Incorrect username or password.').show();return; }else{ $('.alert').hide();$('#loginForm').submit(); }
+	}
+    </script>
+
   </body>
 </html>
