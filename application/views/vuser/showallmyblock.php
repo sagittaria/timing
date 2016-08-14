@@ -347,7 +347,7 @@
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
-                    <h4 class= "modal-title">check bricks in this block</h4>
+                    <h4 class= "modal-title">check recent bricks in this block</h4>
                </div>
                <div class= "modal-body">
                  <table id="tableOfBricks" class="table table-striped table-bordered">
