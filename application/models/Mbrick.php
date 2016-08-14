@@ -48,7 +48,7 @@ class Mbrick extends CI_Model {
 				$info['tips']=' Bricks added before '.$filterDate.'.'; //显示该日及之前添加的brick
 				return $info;
 			}else{
-				$info['tips']=' No brick added before '.$filterDate.' , displaying all.'; //过滤结果为空，于是显示全部
+				$info['tips']=' No match, displaying all.'; //过滤结果为空，于是显示全部
 			}
 		}
 		//2.2另两种情况：如果"不是过滤"，或者过滤下来总条数为零
