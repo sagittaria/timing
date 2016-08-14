@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<a class="btn btn-primary btn-block" onclick="signin()">Continue</a>
 		<p style="text-align:center;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
 		<div class="alert alert-danger" style="display:none;"></div>
+    <div class="alert alert-success" style="display:none;"></div>
 	</form>
 
     </div> <!-- /container -->
@@ -34,11 +35,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		var password=$('[name=builderPassword]').val() || '';
 		if(username.length===0 || password.length===0){ 
 			$('.alert').hide();
-			$('.alert').html('Incorrect username or password.').show();
+			$('.alert-danger').html('Incorrect username or password.').show();
 			return;
 		}else{
 			$('.alert').hide();
-			$('#loginForm').submit();
+			//$('#loginForm').submit(); #replaced by AJAX-style
+      $.ajax({
+        type:'post',
+        url:"<?php echo site_url('Welcome/verifying'); ?>",
+        data:{builderUsername:username,builderPassword:password},
+        success:function(response,status,xhr){
+ 			    if(response=='1'){
+            $('.alert-success').html('Signing in...').show();
+            setTimeout('location.href="<?php echo site_url("Cuser/index"); ?>"',500);
+          }else if(response=='0'){
+            $('.alert-danger').html('Incorrect username or password.').show();
+          }else{
+            alert('something went wrong!');
+          }
+		    }
+      })
 		}
 	}
     </script>

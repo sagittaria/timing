@@ -78,10 +78,11 @@ class Welcome extends CI_Controller {
 			$_SESSION['email']=$user[0]['builderEmail'];
 			$this->load->model('Mbrick');
 			$this->Mbrick->MFupdateVoidBlock();#每次登陆更新Void block里的brick
-			redirect('Cuser/index');
+			//redirect('Cuser/index');
+      echo '1';
 		}else{
-			echo "Invalid username or password";
-			echo "<script>setTimeout('window.history.go(-1)',1000);</script>";
+			echo '0';
+			//echo "<script>setTimeout('window.history.go(-1)',1000);</script>";
 		}
 	}
 	
