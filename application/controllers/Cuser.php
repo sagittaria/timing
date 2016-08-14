@@ -111,6 +111,7 @@ class Cuser extends CI_Controller {
 		$config['cur_tag_close']='</strong></button>';
 		$this->pagination->initialize($config);
 		$data['pagination']=$this->pagination->create_links();
+    $data['blockIdInFilter']=$blockId;#send to view (needed in filterFunction)
 		
 		$this->load->view('header');
 		$this->load->view('vuser/showMoreBricks',$data);
