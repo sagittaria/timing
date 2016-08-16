@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	function signin(){
 		var username=$('[name=builderUsername]').val().trim() || '';
 		var password=$('[name=builderPassword]').val() || '';
-		if(username.length===0 || password.length===0){ 
+		if(username.length < 5 || password.length < 6){ 
 			$('.alert').hide();
 			$('.alert-danger').html('Incorrect username or password.').show();
 			return;
