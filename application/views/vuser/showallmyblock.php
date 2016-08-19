@@ -17,7 +17,6 @@
 </tbody>
 </table></div>
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here are some statistic numbers.</div></div>
-
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var xData=[];
@@ -363,7 +362,7 @@
 </div >
 
 <div class= "modal" id ="updateBlockModal" data-backdrop="static" >
-     <div class="modal-dialog">
+     <div class="modal-dialog modal-sm">
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
@@ -371,15 +370,24 @@
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/updateBlock','id="updateBlockForm" name="updateBlockForm"'); ?>
-					<input type="text" name="blockName" id="blockName"/>
-					<input type="text" name="blockDescription" id="blockDescription"/>
-					<input type="text" name="blockStatus" id="blockStatus"/>
-					<input type="text" name="blockId" id="blockId"/>
-	                <input type="submit" value="update block"/>
-					</form>
-			   </div>
+                    <div class="form-group"><label for="blockName">Name</label><input type="text" name="blockName" id="blockName" class="form-control"/></div>
+                    <div class="form-group"><label for="blockDescription">Description</label><input type="text" name="blockDescription" id="blockDescription" class="form-control"/></div>
+                    <!--<div class="form-group"><label for="blockStatus">Status</label><input type="text" name="blockStatus" id="blockStatus" class="form-control"/></div>-->
+                    <div class="form-group">
+                        <strong>Status:</strong>&nbsp;&nbsp;
+                      <div class="radio-inline">
+                        <label style="font-weight:normal"><input type="radio" name="blockStatus" id="activeRadio" value="0"/>Active</label>
+                      </div>
+                      <div class="radio-inline">
+                        <label style="font-weight:normal"><input type="radio" name="blockStatus" id="sleepRadio" value="1"/>Sleep</label>
+                      </div>
+                    </div>
+					            <input type="hidden" name="blockId" id="blockId"/>                   
+			         </div>
                <div class= "modal-footer">
-			   
+                    <button class="btn btn-default" data-dismiss="modal"/>Close</button>
+			              <button class="btn btn-primary" />Save changes</button>
+					          </form>
                </div>
            </div>
      </div >
@@ -435,7 +443,13 @@ function blockUpdate(BlockID,BlockName,BlockDescription,BlockStatus){//更新blo
 	$('#updateBlockForm #blockId').val(BlockID);
 	$('#updateBlockForm #blockName').val(BlockName);
 	$('#updateBlockForm #blockDescription').val(BlockDescription);
-	$('#updateBlockForm #blockStatus').val(BlockStatus);
+	//$('#updateBlockForm #blockStatus').val(BlockStatus);
+	if(BlockStatus===1){
+    $('#sleepRadio').prop("checked",true);
+	}
+	if(BlockStatus===0){
+    $('#activeRadio').prop("checked",true);	  
+	}
 	$('#updateBlockModal').modal('show');
 }
 
