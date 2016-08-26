@@ -312,7 +312,7 @@
         myChart.setOption(option);
 </script>
 <div style="clear:both;"></div><br>
-<span style="float:right">Note: Void-block represents the QUANTITY of unrecorded time period since you signed up.</span>
+<!--<span style="float:right">Note: Void-block represents the QUANTITY of unrecorded time period since you signed up.</span>-->
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
      <div class="modal-dialog modal-sm">
@@ -507,5 +507,5 @@ function ajaxBlockDelete(BlockID){
 </script>
 
 <?php }else{ ?>
-	please <a href="<?php echo site_url('Cuser/addBlock'); ?>">add a block</a> first.
+  <script>window.location.href="<?php echo site_url('Cuser/addBlock'); ?>"</script>
 <?php } ?>
