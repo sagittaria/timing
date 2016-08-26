@@ -315,7 +315,7 @@
 <span style="float:right">Note: Void-block represents the QUANTITY of unrecorded time period since you signed up.</span>
 
 <div class= "modal" id ="addBrickModal" data-backdrop="static" >
-     <div class="modal-dialog">
+     <div class="modal-dialog modal-sm">
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
@@ -323,19 +323,19 @@
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/addBrick','id="newBrickForm" name="newBrickForm"'); ?>
-					<input type="text" name="brickStart" id="brickStart"/>
-						<script>
-						var today=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());//为了从前7天的零点开始，只能 var 一个零点的 today
-						$(function () {	$('#brickStart').datetimepicker({viewMode:'days', minDate:moment(today).subtract(7,'days').format('YYYY/MM/DD HH:mm'), defaultDate:new Date(), format:'YYYY/MM/DD HH:mm'});	});
-						</script>
-					<input type="text" name="brickDuration"/>
-					<input type="text" name="brickContent"/>
-					<input type="text" name="blockId" id="blockId"/>
-					<input type="submit" value="lay a brick"/>
-					</form>
+					          <div class="form-group"><label for="brickStart">Start</label><input type="text" name="brickStart" id="brickStart" class="form-control"/></div>
+						          <script>
+						          var today=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());//为了从前7天的零点开始，只能 var 一个零点的 today
+						          $(function () {	$('#brickStart').datetimepicker({viewMode:'days', minDate:moment(today).subtract(7,'days').format('YYYY/MM/DD HH:mm'), defaultDate:new Date(), format:'YYYY/MM/DD HH:mm'});	});
+						          </script>
+					          <div class="form-group"><label for="brickDuration">Duration</label><input type="text" name="brickDuration" id="brickDuration" class="form-control"/></div>
+					          <div class="form-group"><label for="brickContent">Content</label><input type="text" name="brickContent" id="brickContent" class="form-control"/></div>
+					          <input type="hidden" name="blockId" id="blockId"/>
                </div>
                <div class= "modal-footer">
-                    
+                    <a class="btn btn-default" data-dismiss="modal"/>Close</a>
+					          <a class="btn btn-primary">lay a brick</a>
+					          </form>                    
                </div>
            </div>
      </div >
@@ -346,7 +346,7 @@
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
-                    <h4 class= "modal-title">check recent bricks in this block</h4>
+                    <h4 class= "modal-title">Check recent bricks in this block</h4>
                </div>
                <div class= "modal-body">
                  <table id="tableOfBricks" class="table table-striped table-bordered">
@@ -366,7 +366,7 @@
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span ></button>
-                    <h4 class= "modal-title">update this block</h4>
+                    <h4 class= "modal-title">Update this block</h4>
                </div>
                <div class= "modal-body">
                     <?php echo form_open('Cuser/updateBlock','id="updateBlockForm" name="updateBlockForm"'); ?>
@@ -398,16 +398,17 @@
            <div class= "modal-content">
                <div class= "modal-header">
                     <button class= "close" data-dismiss="modal" ><span> &times;</span></button>
-                    <h4 class= "modal-title">confirm delete this block</h4>
+                    <h4 class= "modal-title">Confirm delete this block</h4>
                </div>
                <div class= "modal-body">
-               		<span id="nameOfTheBlockToBeDeleted"></span>
-                    <input type="text" id="blockName"/>
-					<input type="text" name="blockId" id="blockId"/>
+                   <div class="form-group">This action <span class="h4">CANNOT</span> be undone.</div>
+               		 <div class="form-group">Please type in the block name <span id="nameOfTheBlockToBeDeleted" class="h4"></span> to confirm.</div>
+                   <div class="form-group"><input type="text" id="blockName" class="form-control"/></div>
+					<input type="hidden" name="blockId" id="blockId"/>
 					</form>
                </div>
                <div class= "modal-footer">
-                    <button id="btnDeleteBlock" class= "btn btn-danger" disabled="disabled" onclick="ajaxBlockDelete($('#confirmBlockDeleteModal #blockId').val());">yes, I want to destroy it.</button>
+                    <button id="btnDeleteBlock" class= "btn btn-danger" disabled="disabled" onclick="ajaxBlockDelete($('#confirmBlockDeleteModal #blockId').val());">yes, I do want to destroy it</button>
                </div>
            </div>
      </div >
