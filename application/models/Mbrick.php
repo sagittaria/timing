@@ -83,13 +83,15 @@ class Mbrick extends CI_Model {
 		$this->db->limit(1);
 		$query = $this->db->get();
 		$result = $query->result_array();
-		$brickIdUsedToUpdateBrick = $result[0]['brickId'];
-		//2.更新之
-		$data = array(
-				'brickDuration' => (time()-$result[0]['brickStart'])/60,
-		);
-		
-		$this->db->where('brickId',$brickIdUsedToUpdateBrick);
-		$this->db->update('brick', $data);
+		if($result){ #here exists a 'if-judgement' because $result might be FALSE if this the first time a newly registered user logged in.
+      $brickIdUsedToUpdateBrick = $result[0]['brickId'];
+      //2.更新之
+      $data = array(
+        'brickDuration' => (time()-$result[0]['brickStart'])/60,
+      );
+
+      $this->db->where('brickId',$brickIdUsedToUpdateBrick);
+      $this->db->update('brick', $data);
+		}
 	}
 }
