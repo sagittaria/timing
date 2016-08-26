@@ -328,13 +328,14 @@
 						          var today=new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());//为了从前7天的零点开始，只能 var 一个零点的 today
 						          $(function () {	$('#brickStart').datetimepicker({viewMode:'days', minDate:moment(today).subtract(7,'days').format('YYYY/MM/DD HH:mm'), defaultDate:new Date(), format:'YYYY/MM/DD HH:mm'});	});
 						          </script>
-					          <div class="form-group"><label for="brickDuration">Duration</label><input type="text" name="brickDuration" id="brickDuration" class="form-control"/></div>
+					          <div class="form-group"><label for="brickDuration">Duration, min</label><input type="text" name="brickDuration" id="brickDuration" class="form-control"/></div>
 					          <div class="form-group"><label for="brickContent">Content</label><input type="text" name="brickContent" id="brickContent" class="form-control"/></div>
 					          <input type="hidden" name="blockId" id="blockId"/>
+					          <div class="alert alert-danger" id="formInfoAddBrick" style="display:none;"></div>
                </div>
                <div class= "modal-footer">
                     <a class="btn btn-default" data-dismiss="modal"/>Close</a>
-					          <a class="btn btn-primary">lay a brick</a>
+					          <a class="btn btn-primary" onclick="validateAddBrick();">lay a brick</a>
 					          </form>                    
                </div>
            </div>
@@ -382,11 +383,12 @@
                         <label style="font-weight:normal"><input type="radio" name="blockStatus" id="sleepRadio" value="1"/>Sleep</label>
                       </div>
                     </div>
-					            <input type="hidden" name="blockId" id="blockId"/>                   
+					            <input type="hidden" name="blockId" id="blockId"/>
+					            <div class="alert alert-danger" id="formInfoUpdateBlock" style="display:none;"></div>
 			         </div>
                <div class= "modal-footer">
                     <button class="btn btn-default" data-dismiss="modal"/>Close</button>
-			              <button class="btn btn-primary" />Save changes</button>
+			              <a class="btn btn-primary" onclick="validateUpdateBlock();"/>Save changes</a>
 					          </form>
                </div>
            </div>
@@ -440,7 +442,33 @@ function blockCheck(intBlockID){//显示这个block里的brick
 	})	
 }
 
+function validateAddBrick(){
+  $('.alert').hide();
+  var brickDuration = $('#brickDuration').val();
+  var brickContent = $('#brickContent').val() || '';
+  if(brickDuration.length==0 || brickContent.length==0){
+    $('#formInfoAddBrick').html('Both fields are required.').show();
+  }else if(!/^\+?[1-9][0-9]*$/.test(brickDuration)){
+    $('#formInfoAddBrick').html('The Duration field needs a positive integer').show();
+  }else{
+    $('#newBrickForm').submit();
+  }
+}
+
+function validateUpdateBlock(){
+  $('.alert').hide();
+  var blockName = $('#updateBlockForm #blockName').val().trim() || '';
+  var blockDescription = $('#updateBlockForm #blockDescription').val().trim() || '';
+  if(blockName.length == 0 || blockDescription.length == 0){
+    $('#formInfoUpdateBlock').html('Name and description are required.').show();
+		return;
+  }else{
+    $('#updateBlockForm').submit();
+  }
+}
+
 function blockUpdate(BlockID,BlockName,BlockDescription,BlockStatus){//更新block
+  $('.alert').hide();
 	$('#updateBlockForm #blockId').val(BlockID);
 	$('#updateBlockForm #blockName').val(BlockName);
 	$('#updateBlockForm #blockDescription').val(BlockDescription);
