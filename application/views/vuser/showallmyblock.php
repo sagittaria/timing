@@ -1,7 +1,7 @@
 <?php if(count($blocks) != 1) { ?>
 <div class="container">
   <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">Overlooking all the blocks</div>
       <table id="tableOfBlocks" class="table table-striped" >
       <thead><tr><th>Name</th><th>Description</th><th style="width:140px;">Foundation</th><th style="width:65px;">Status</th><th style="width:220px;">Ops</th></tr></thead>
