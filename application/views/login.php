@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="text" name="builderUsername" value="<?php if(isset($cookieUsername)){echo htmlspecialchars($cookieUsername);} ?><?php echo set_value('builderUsername'); ?>" class="form-control sign-in" placeholder="Username" required autofocus>
 		<input type="password" name="builderPassword" class="form-control sign-in" placeholder="Password" required>
 		<a class="btn btn-primary btn-block" onclick="signin()">Continue</a>
-		<p style="text-align:center;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
+		<p style="text-align:center;margin-top:7px;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
 		<div class="alert alert-danger" style="display:none;"></div>
     <div class="alert alert-success" style="display:none;"></div>
 	</form>
