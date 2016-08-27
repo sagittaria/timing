@@ -448,7 +448,7 @@ function blockCheck(intBlockID){//显示这个block里的brick
 				}
 				$('#checkBlockModal').modal('show');
 			}else{
-				$("#checkBlockModal .modal-body").append("<div class='alert alert-warning'><strong>Void</strong> - No brick found.</div>");
+				$("#checkBlockModal .modal-body").append("<div class='alert alert-warning'><strong>No brick found.</strong></div>");
 				$('#checkBlockModal').modal('show');
 			}
 		}
