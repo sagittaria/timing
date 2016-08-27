@@ -1,6 +1,7 @@
 <?php
 	if(!$bricks){
-		echo "No bricks here.";
+		echo "No bricks here, redirecting to <a href='".site_url('Cuser/index')."'>home</a> in 1 Sec...";
+		echo "<script>setTimeout('window.location.href=\"".site_url('Cuser/index')."\"',1000)</script>";
 	}else{
 ?>
   <div class="container">
