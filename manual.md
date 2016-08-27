@@ -38,5 +38,10 @@ Some of the charts might need at least one Brick to display properly.
 
 ---
 
+####GitHub Repository
+Source code may be found on [sagittaria/timing](https://github.com/sagittaria/timing).
+
+---
+
 ####Donate
 ![donate](http://www.kgroup.ren/donate.png)
