@@ -1,22 +1,29 @@
 <?php if(count($blocks) != 1) { ?>
-
-<div class="container"><div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"><table id="tableOfBlocks" class="table table-striped" >
-<thead><tr><th>Name</th><th>Description</th><th style="width:140px;">Foundation</th><th style="width:65px;">Status</th><th style="width:220px;">Ops</th></tr></thead>
-<tbody>
-<?php  foreach($blocks as $block){ 
-	if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
-	<tr>	<td><?php echo  $block['blockName']; ?></td>
-		<td><?php echo  $block['blockDescription']; ?></td>
-		<td><?php echo date('Y/m/d H:i',$block['blockFoundation']); ?></td>
-		<td><?php if($block['blockStatus']==1){ echo 'Sleep';}else{echo 'Active';} ?></td>		
-		<td><button class="btn btn-warning btn-xs" onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button>
-		    <button class="btn btn-success btn-xs" onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button>
-		    <button class="btn btn-info btn-xs" onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button>
-		    <button class="btn btn-danger btn-xs" onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
-	</tr><?php } ?>
-</tbody>
-</table></div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here are some statistic numbers.</div></div>
+<div class="container">
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">Overlooking all the blocks</div>
+      <table id="tableOfBlocks" class="table table-striped" >
+      <thead><tr><th>Name</th><th>Description</th><th style="width:140px;">Foundation</th><th style="width:65px;">Status</th><th style="width:220px;">Ops</th></tr></thead>
+      <tbody>
+      <?php  foreach($blocks as $block){ 
+	      if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
+	      <tr>	<td><?php echo  $block['blockName']; ?></td>
+		      <td><?php echo  $block['blockDescription']; ?></td>
+		      <td><?php echo date('Y/m/d H:i',$block['blockFoundation']); ?></td>
+		      <td><?php if($block['blockStatus']==1){ echo 'Sleep';}else{echo 'Active';} ?></td>		
+		      <td><button class="btn btn-warning btn-xs" onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button>
+		          <button class="btn btn-success btn-xs" onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button>
+		          <button class="btn btn-info btn-xs" onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button>
+		          <button class="btn btn-danger btn-xs" onclick="BlockDelete(<?php echo $block['blockId'].',\''.$block['blockName'].'\''; ?>)">delete</button></td>
+	      </tr><?php } ?>
+      </tbody>
+      </table>
+    </div><!--div class="panel"-->
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here are some statistic numbers.</div>
+</div><!--div class="container"-->
+<div class="container">
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
 		var xData=[];
@@ -311,6 +318,7 @@
 		};
         myChart.setOption(option);
 </script>
+</div><!--div class="container"-->
 <div style="clear:both;"></div><br>
 <!--<span style="float:right">Note: Void-block represents the QUANTITY of unrecorded time period since you signed up.</span>-->
 

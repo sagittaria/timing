@@ -79,8 +79,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 	</style>
   <script>
-    $(document).ready(function(){  
-        $(".blog-nav-item").each(function(){  
+    $(document).ready(function(){
+        $(".blog-nav-item").each(function(){
             $this = $(this);  
             if($this[0].href==String(window.location)){  
                 $this.addClass("active");  
@@ -103,6 +103,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </nav>
       </div>
     </div>
-
+  <div style="clear:both;height:35px;"></div>
   <div class="container"><!--《/div》在footer里-->
 
