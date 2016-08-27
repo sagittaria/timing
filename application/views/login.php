@@ -9,11 +9,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Sign in</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/bootstrap.min.css');?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sign.css');?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/HeaderAndFooterForWelcome.css');?>" />
 	<script>
 
 	</script>
     </head>
   <body>
+      <div class="blog-masthead">
+      <div class="container" style="text-align:center;">
+        <nav class="blog-nav">
+          <span class="blog-nav-item brandIcon">Timing, tic tac toc</span>
+          <a class="blog-nav-item" href="<?php echo site_url('Cuser/index');?>">Home</a>
+          <a class="blog-nav-item" href="<?php echo site_url('Cuser/addBlock');?>">New Block</a>
+          <a class="blog-nav-item" href="<?php echo site_url('Welcome/manual');?>">Manual</a>
+        </nav>
+      </div>
+    </div>
+  <div style="clear:both;height:35px;"></div>
+  <div class="container"><!--《/div》在footer里-->
+  
     <div class="container">
     <?php echo form_open('Welcome/verifying','id="loginForm" name="loginForm" class="form-sign"'); ?>
 		<h4 class="form-sign-heading" style="text-align:center;">Sign in to Timing</h4>
@@ -58,6 +72,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	}
     </script>
-
-  </body>
-</html>

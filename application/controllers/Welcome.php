@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 		    delete_cookie('builderUsername');
 		}else{
 		    $this->load->view('login');
+		    $this->load->view('footer');
 		}
 	}
 	
@@ -45,6 +46,7 @@ class Welcome extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('register');//如果没通过检查，就显示注册页面
+			$this->load->view('footer');
 		}else{   //如果通过检查的话调用 模型的 MFregister()方法注册
 			if($this->Mbuilder->MFregister()){
 				set_cookie('builderUsername',$un,time()+6);

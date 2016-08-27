@@ -1,13 +1,13 @@
 body {
-  padding-top: 70px;
-  padding-bottom: 40px;
+  padding-top: 0px;
+  /*padding-bottom: 40px;*/
   background-color: #eee;
 }
 
 .form-sign {
   max-width: 300px;
   padding: 15px;
-  margin: 0 auto;
+  margin: 40px auto;
   background-color:white;
   border:1px solid #a4a4c1;
   border-radius:4px;
