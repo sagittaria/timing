@@ -7,8 +7,8 @@
   <div class="container">
 
  		<div class="row">
-      <div class="col-xs-3 col-sm-5 col-md-5 col-lg-5"><span class="h2"><?php echo $tips; ?></span></div>
-      <div class="col-xs-9 col-sm-3 col-md-3 col-lg-3">
+      <div class="col-sm-5"><span class="h3"><?php echo $tips; ?></span></div>
+      <div class="col-sm-3">
 		  <form method="post" class="form-inline" action="<?php echo site_url('Cuser/showMoreBricks').'/'.$blockIdInFilter.'/0'; ?>">
 		  <div class="form-group"><input type="text" name="filterDate" id="filterDate" class="form-control" style="border-radius:3px;"></div>
 		  <script> $(function () {	$('#filterDate').datetimepicker({viewMode:'days', maxDate:moment().format('YYYY/MM/DD'), format:'YYYY/MM/DD'});	});	</script>
@@ -17,7 +17,7 @@
 		</div><!--row-->
 	
 	  <div class="row">
-	    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+	    <div class="col-xs-12 col-sm-8">
 		    <table class="table table-striped table-bordered">
 		    <tr class='success'><th style="width:7%">#</th><th style="width:25%">start</th><th style="width:20%">duration, min.</th><th style="width:40%">content</th><th>Ops</th></tr>
 			    <?php $cnt=0; foreach($bricks as $brick){ ?>
@@ -29,7 +29,7 @@
 			    <?php } ?>
 		    </table>
 	    </div>
-	    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	    <div class="col-xs-12 col-sm-4">
 		    one more chart
 	    </div>
 	  </div><!--row-->
@@ -50,7 +50,7 @@
 	<?php } ?>
 
     <div class="row">
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <?php echo $pagination; ?>
       </div>
     </div>
