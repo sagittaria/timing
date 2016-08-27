@@ -44,6 +44,7 @@
 		
        var myChart = echarts.init(document.getElementById('lineTypeCharts'));
        option = {
+      animation: false,
 			title: {
 				text: '#01 Base line, min.',
 				x:'center',
@@ -97,6 +98,7 @@
 		
         var myChart = echarts.init(document.getElementById('barTypeCharts'));
         var option = {
+          animation: false,
             title: {
                 text: '#02 Total duration, hr.',
 				top: 'bottom',
@@ -145,6 +147,7 @@
 		
 		var myChart = echarts.init(document.getElementById('pieTypeCharts'));
 		var option = {
+    		animation: false,
 			title: {
                 text: '#03 Block ratio',
 				top: 'bottom',
@@ -222,6 +225,7 @@
 
         var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
         var option = {
+          animation: false,
             title: {
                 text: '#05 Against void',
 				top: 'bottom',
@@ -273,6 +277,7 @@
 		
 		var myChart = echarts.init(document.getElementById('pieTypeCharts-2'));
 		var option = {
+   		animation: false,
 			title: {
                 text: '#06 Struggling',
 				top: 'bottom',
