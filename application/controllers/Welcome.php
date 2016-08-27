@@ -22,7 +22,13 @@ class Welcome extends CI_Controller {
 		}else{
 		    $this->load->view('login');
 		}
-		
+	}
+	
+	public function manual(){
+	  #something like user-guide
+	  $this->load->view('header');
+		$this->load->view('manual');
+		$this->load->view('footer');
 	}
 	
 	public function register(){

@@ -26,13 +26,6 @@ class Cuser extends CI_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function manual(){
-	  #something like user-guide
-	  $this->load->view('header');
-		$this->load->view('vuser/manual');
-		$this->load->view('footer');
-	}
-	
 	public function addBlock(){
 		#增加block的界面
 		$this->load->view('header');
