@@ -27,8 +27,8 @@ Only one table stays on the Home page, showing general infomation about all the 
 Six charts are placed on the Home page to help measure efficiency.
 + \#01 __Base line__      showing durations of last added 30 Bricks.
 + \#02 __Total duration__ gives the sum of all Bricks' durations in each Block.
-+ \#03 __Block ratio__    
-+ \#04 __Not decided__    not decided yet...
++ \#03 __Block ratio__    illustrates numerical proportion of each Block's total duration against ALL Recorded time.
++ \#04 __Not decided__    as named, not decided yet...
 + \#05 __Against Void__   amount to Chart#02 including the *Void* Block.
 + \#06 __Struggling__     amount to Chart#03 including the *Void* Block.
 
@@ -37,3 +37,4 @@ Some of the charts might need at least one Brick to display properly.
 ---
 
 ####Donate
+![donate](http://www.kgroup.ren/donate.png)
