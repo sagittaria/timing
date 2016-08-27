@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 	
 	public function manual(){
 	  #something like user-guide
-	  $this->load->view('header');
+	  //$this->load->view('header');
 		$this->load->view('manual');
 		$this->load->view('footer');
 	}
