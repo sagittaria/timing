@@ -39,4 +39,4 @@ Some of the charts might need at least one Brick to display properly.
 ---
 
 ####Donate
-![donate](http://www.kgroup.ren/donate.png)
+![donate](donate.png)
