@@ -27,12 +27,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <body>
 
     <div class="blog-masthead">
-      <div class="container" >
+      <div class="container" style="text-align:center;">
         <nav class="blog-nav">
           <span class="blog-nav-item brandIcon">Timing, tic tac toc</span>
           <a class="blog-nav-item" href="<?php echo site_url('Cuser/index');?>">Home</a>
           <a class="blog-nav-item" href="<?php echo site_url('Cuser/addBlock');?>">New Block</a>
           <a class="blog-nav-item" href="<?php echo site_url('Welcome/manual');?>">Manual</a>
+          <?php if(isset($_SESSION['name'])){ ?>
+            <a class="blog-nav-item pull-right" href="<?php echo site_url('Cuser/logout');?>">Quit <span class="glyphicon glyphicon-log-out"></span></a>
+            <span class="blog-nav-item pull-right brandIcon" style="font-weight:normal;">Signed in as <span class="brandIcon"><?php echo $_SESSION['name'];?></span>, </span>
+          <?php }else{ ?>
+            <a class="blog-nav-item pull-right" href="<?php echo site_url('Cuser/index');?>"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            <span class="blog-nav-item pull-right brandIcon" style="font-weight:normal;">Hi, there! </span>
+          <?php } ?>
         </nav>
       </div>
     </div>

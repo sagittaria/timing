@@ -16,12 +16,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </head>
   <body>
       <div class="blog-masthead">
-      <div class="container">
+      <div class="container" style="text-align:center;">
         <nav class="blog-nav">
           <span class="blog-nav-item brandIcon">Timing, tic tac toc</span>
           <a class="blog-nav-item" href="<?php echo site_url('Cuser/index');?>">Home</a>
           <a class="blog-nav-item" href="<?php echo site_url('Cuser/addBlock');?>">New Block</a>
           <a class="blog-nav-item" href="<?php echo site_url('Welcome/manual');?>">Manual</a>
+          <a class="blog-nav-item pull-right" href="<?php echo site_url('Cuser/index');?>"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          <span class="blog-nav-item pull-right brandIcon" style="font-weight:normal;">Hi, there! </span>
         </nav>
       </div>
     </div>
@@ -35,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="password" name="builderPassword" class="form-control sign-in" placeholder="Password" required>
 		<a class="btn btn-primary btn-block" id="submitBtn" onclick="signin()">Continue</a>
 		<p style="text-align:center;margin-top:7px;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
+		<p style="text-align:center;margin-top:7px;">Or take a look at the <a href="<?php echo site_url('Welcome/manual');?>">Manual</a> first?</p>
 		<div class="alert alert-danger" style="display:none;"></div>
     <div class="alert alert-success" style="display:none;"></div>
 	</form>
