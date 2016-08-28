@@ -1,3 +1,5 @@
+please refer to [manual.md](manual.md)
+
 # User Guide
 
 Here are some explanatory notes for this app:
