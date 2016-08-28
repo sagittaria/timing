@@ -30,8 +30,70 @@
 		    </table>
 	    </div>
 	    <div class="col-xs-12 col-sm-4">
-		    one more chart
-	    </div>
+	      <div class="panel panel-default">
+	        <div class="panel-heading">Duration-Trends of Bricks</div>
+          <div id="barTypeCharts" style="height:300px;"></div>
+            <script>
+		            var chartsData = <?php echo json_encode($bricks);?>;
+		            var chartsDataX=[];
+		            var chartsDataY=[];
+		            for(i=0;i<chartsData.length;i++){
+			            chartsDataX.push(0-(i+1));
+			            chartsDataY.push(((chartsData[i].brickDuration)/60).toFixed(2));
+		            }
+		            chartsDataX.reverse();
+		            chartsDataY.reverse();
+		            
+                var myChart = echarts.init(document.getElementById('barTypeCharts'));
+                var option = {
+                                title: {
+                                  text: 'Brick durations, hr.',
+                                  top: 'bottom',
+                                  left: 'center',
+                                },
+                                tooltip:{trigger:'item'},
+                                grid:{
+                                  left:'10%',
+                                  right:'3%',
+                                  top:'10%',
+                                  bottom: '18%',
+                                  //containLabel: true
+                                },
+                                xAxis: {
+                                  data: chartsDataX,
+                                },
+                                yAxis: {},
+                                series: [{
+                                  name: 'Duration',
+                                  type: 'bar',
+                                  data: chartsDataY,
+                                  itemStyle: {
+                                    normal: {
+                                    color: function(params) {
+                                      // build a color map as needed.
+                                      var colorList = ['#99ff99','#00cc00','#006600','#ff9980','#ff3300','#801a00','#99e6ff','#1ac6ff','#0086b3','#ffb3ff','#ff33ff','#990099'];
+                                      return colorList[params.dataIndex]
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  name: 'Duration.',
+                                  type: 'line',
+                                  itemStyle:{
+						                        normal:{
+							                        lineStyle:{
+								                        color:'#ff0000',
+							                        }
+						                        }
+					                        },
+                                  data: chartsDataY,                                
+                                }]
+                              };
+                myChart.setOption(option);
+            </script>
+          </div><!--panel-->  
+	    </div><!--col-sm-4-->
 	  </div><!--row-->
 	
 	<script>
