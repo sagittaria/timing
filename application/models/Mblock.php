@@ -87,7 +87,7 @@ class Mblock extends CI_Model {
 	}
 	
 	public function MFgetChartsDataForLineType(){#抓取信息，生成折线图
-		$this->db->select('brickDuration');
+		$this->db->select('brickDuration,brickStart');
 		$this->db->from('brick');
 		$this->db->join('block','brick.blockId=block.blockId');
 		$this->db->join('builder','builder.builderId=block.builderId');
