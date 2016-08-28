@@ -71,7 +71,7 @@
                                     normal: {
                                     color: function(params) {
                                       // build a color map as needed.
-                                      var colorList = ['#99ff99','#00cc00','#006600','#ff9980','#ff3300','#801a00','#99e6ff','#1ac6ff','#0086b3','#ffb3ff','#ff33ff','#990099'];
+                                      var colorList = ['#99ff99','#ff9980','#99e6ff','#ffb3ff','#00cc00','#ff3300','#1ac6ff','#ff33ff','#006600','#801a00','#0086b3','#990099'];
                                       return colorList[params.dataIndex]
                                       }
                                     }
@@ -83,7 +83,7 @@
                                   itemStyle:{
 						                        normal:{
 							                        lineStyle:{
-								                        color:'#ff0000',
+								                        color:'#b2b300'
 							                        }
 						                        }
 					                        },
