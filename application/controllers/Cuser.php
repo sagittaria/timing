@@ -39,10 +39,10 @@ class Cuser extends CI_Controller {
 			redirect('Cuser/logout');
 		}#禁止输入网址访问
 		if($this->Mblock->MFaddBlockGo()){
-			echo "new block added.";
+			//echo "new block added.";
 			redirect('Cuser/index');
 		}else{
-			echo "block not added.";
+			//echo "block not added.";
 			redirect('Cuser/addBlock');
 		}
 	}
@@ -53,9 +53,9 @@ class Cuser extends CI_Controller {
 			redirect('Cuser/logout');
 		}#禁止输入网址访问
 		if($this->Mbrick->MFaddBrickGo()){
-			echo "succeeded.";
+			//echo "succeeded.";
 		}else{
-			echo "<script>alert('Somehow failed, please try later');</script>";
+			//echo "<script>alert('Somehow failed, please try later');</script>";
 		}
 		redirect('Cuser/index');
 	}
@@ -74,7 +74,7 @@ class Cuser extends CI_Controller {
 			redirect('Cuser/logout');
 		}#禁止输入网址访问
 		if($this->Mblock->MFupdateBlockGo()){
-			echo "Block updated.";
+			//echo "Block updated.";
 		}else{
 			echo "<script>alert('Somehow failed, please try later');</script>";
 		}
