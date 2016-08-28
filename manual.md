@@ -10,8 +10,8 @@ After signing up, please create a new Block to continue. In short, we create new
     + __Create__  --Click *New Block* on the navigation bar to create a new one.
     + __Check__  --To view recent Bricks in a specific Block, click the *check* button following the Block's status column.
     + __Status__ --A Block's status is either *Active* or *Sleep*, can be changed when updating this Block. Sleeping Blocks will absent from Charts#02.
-    + __Void__ --A Block named *Void* is auto-generated and self-maintained, it calculates the amount of ALL Unrecorded time since signing up.
-  2. **Brick** represents each time period invested to reach a goal, to complete a project, or to serve a purpose.
+    + __Void__ --A Block named *Void* is auto-generated and self-maintained, it calculates the amount of ALL Unrecorded time since registration.
+  2. **Brick** represents each time period invested to reach a goal, to complete a project, or to serve a purpose and something like that.
     + __Add__  --To add a new Brick in a specific Block, click the *build* button following the Block's status column.
     + __Delete__  --Awkward but true that Bricks can only be deleted when viewing that Block's all Bricks, by *(Block)check->more...->del*.
     + __Duration__  --The length of time period in this Brick.
@@ -32,7 +32,7 @@ Six charts are placed on the Home page to help visualize time usage.
 + \#03 __Block ratio__    illustrates numerical proportion of each Block's total duration against ALL Recorded time.
 + \#04 __Not decided__    as named, not decided yet...
 + \#05 __Against Void__   amount to Chart#02 including the *Void* Block.
-+ \#06 __Struggling__     amount to Chart#03 including the *Void* Block.
++ \#06 __Struggling__     amount to Chart#03 including the *Void* Block(obviously the denominator is now the total hours since signing up).
 
 Some of the charts might need at least one Brick to display properly.
 
