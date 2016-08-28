@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <body>
 
     <div class="blog-masthead">
-      <div class="container" style="padding-left:25%;">
+      <div class="container" >
         <nav class="blog-nav">
           <span class="blog-nav-item brandIcon">Timing, tic tac toc</span>
           <a class="blog-nav-item" href="<?php echo site_url('Cuser/index');?>">Home</a>
