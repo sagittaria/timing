@@ -27,7 +27,8 @@
       <div class="panel-heading">Profile</div>
       <div class="panel-body"><!-- below <span>s filled when these table or charts are generating-->
       <?php if(count($blocks) <= 2){ ?>
-        No need of counting right now.
+        No need of counting right now.<hr>
+        <strong>Note</strong> that some of the charts below may need a few more data to display properly.
       <?php }else{ ?>
         <p><strong># Blocks: </strong><span id="Profile_numberOfBlocks"><?php echo (count($blocks)-1); ?></span> (<span id="Profile_numberOfActiveBlocks"><?php echo $countActive; ?></span> Active).</p>
         <p><strong>Top Block: </strong><span id="Profile_nameOfTopBlock"><!--chart#05--></span>, <span id="Profile_totalDurationOfTopBlock"><!--chart#05--></span> hr.</p>
@@ -220,7 +221,7 @@
 		var myChart = echarts.init(document.getElementById('lineTypeCharts-2'));
 		var option ={
 				title: {
-					text: "#04 Not decided yet...",
+					text: "#04 Not decided",
 					top:'center',
 					left:'center',
 				},
