@@ -53,7 +53,7 @@ class Mblock extends CI_Model {
 			$blockIdUsedToInsertBrick = $result[0]['blockId'];
 			$data = array(
 					'brickStart' => $result[0]['blockFoundation'],
-					'brickDuration' => 0,
+					'brickDuration' => 1,
 					'brickContent' => 'timer',
 					'blockId' => $blockIdUsedToInsertBrick,
 			);
