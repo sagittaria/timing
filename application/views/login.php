@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h4 class="form-sign-heading" style="text-align:center;">Sign in to Timing</h4>
 		<input type="text" name="builderUsername" value="<?php if(isset($cookieUsername)){echo htmlspecialchars($cookieUsername);} ?><?php echo set_value('builderUsername'); ?>" class="form-control sign-in" placeholder="Username" required autofocus>
 		<input type="password" name="builderPassword" class="form-control sign-in" placeholder="Password" required>
-		<a class="btn btn-primary btn-block" onclick="signin()">Continue</a>
+		<a class="btn btn-primary btn-block" id="submitBtn" onclick="signin()">Continue</a>
 		<p style="text-align:center;margin-top:7px;">New to Timing? <a href="<?php echo site_url('Welcome/register'); ?>">Create an account</a>.</p>
 		<div class="alert alert-danger" style="display:none;"></div>
     <div class="alert alert-success" style="display:none;"></div>
@@ -44,31 +44,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('public/js/bootstrap.min.js');?>" type="text/javascript"></script>
     <script>
-	function signin(){
-		var username=$('[name=builderUsername]').val().trim() || '';
-		var password=$('[name=builderPassword]').val() || '';
-		if(username.length < 5 || password.length < 6){ 
-			$('.alert').hide();
-			$('.alert-danger').html('Incorrect username or password.').show();
-			return;
-		}else{
-			$('.alert').hide();
-			//$('#loginForm').submit(); #replaced by AJAX-style
-      $.ajax({
-        type:'post',
-        url:"<?php echo site_url('Welcome/verifying'); ?>",
-        data:{builderUsername:username,builderPassword:password},
-        success:function(response,status,xhr){
- 			    if(response=='1'){
-            $('.alert-success').html('Signing in...').show();
-            setTimeout('location.href="<?php echo site_url("Cuser/index"); ?>"',500);
-          }else if(response=='0'){
-            $('.alert-danger').html('Incorrect username or password.').show();
-          }else{
-            alert('something went wrong!');
-          }
+      $("#loginForm").keydown(function(e){
+        var e = e || event,
+        keycode = e.which || e.keyCode;
+        if (keycode==13) {
+          $("#submitBtn").trigger("click");
+        }
+      });
+      
+	    function signin(){
+		    var username=$('[name=builderUsername]').val().trim() || '';
+		    var password=$('[name=builderPassword]').val() || '';
+		    if(username.length < 5 || password.length < 6){ 
+			    $('.alert').hide();
+			    $('.alert-danger').html('Incorrect username or password.').show();
+			    return;
+		    }else{
+			    $('.alert').hide();
+			    //$('#loginForm').submit(); #replaced by AJAX-style
+          $.ajax({
+            type:'post',
+            url:"<?php echo site_url('Welcome/verifying'); ?>",
+            data:{builderUsername:username,builderPassword:password},
+            success:function(response,status,xhr){
+     			    if(response=='1'){
+                $('.alert-success').html('Signing in...').show();
+                setTimeout('location.href="<?php echo site_url("Cuser/index"); ?>"',500);
+              }else if(response=='0'){
+                $('.alert-danger').html('Incorrect username or password.').show();
+              }else{
+                alert('something went wrong!');
+              }
+		        }
+          })
 		    }
-      })
-		}
-	}
+	    }
     </script>
