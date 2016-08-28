@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo base_url();?>public/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<script src="<?php echo base_url('public/jquery.js');?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('public/echarts.min.js');?>"></script>
+  <script src="<?php echo base_url();?>public/moment.js"></script>
 	<style>
 	  html {
       position: relative;
