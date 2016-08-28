@@ -9,7 +9,7 @@ After signing up, please create a new Block to continue. In short, we create new
   1. **Block** refers to a shorterm goal, an ambitious project, a specific purpose, or anything else wanted, contains multiple Bricks.
     + __Create__  --Click *New Block* on the navigation bar to create a new one.
     + __Check__  --To view recent Bricks in a specific Block, click the *check* button following the Block's status column.
-    + __Status__ --A Block's status is either *Active* or *Sleep*, can be changed when updating this Block. Sleeping Blocks will absent from Charts#02.
+    + __Status__ --A Block's status is either *Active* or *Sleep*, can be changed when updating this Block. Sleeping Blocks will absent from Charts#02 and #03.
     + __Void__ --A Block named *Void* is auto-generated and self-maintained, it calculates the amount of ALL Unrecorded time since registration.
   2. **Brick** represents each time period invested to reach a goal, to complete a project, or to serve a purpose and something like that.
     + __Add__  --To add a new Brick in a specific Block, click the *build* button following the Block's status column.
