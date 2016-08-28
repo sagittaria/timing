@@ -2,16 +2,17 @@
 <div class="container">
   <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <div class="panel panel-info">
-      <div class="panel-heading">Overlooking all the blocks</div>
+      <div class="panel-heading">Overlooking all the Blocks</div>
       <table id="tableOfBlocks" class="table table-striped" >
       <thead><tr><th>Name</th><th>Description</th><th style="width:140px;">Foundation</th><th style="width:65px;">Status</th><th style="width:220px;">Ops</th></tr></thead>
       <tbody>
+      <?php $countActive=0; ?>
       <?php  foreach($blocks as $block){ 
 	      if($block['blockStatus']==3){continue;}//不显示status=3（隐藏）的block?>
 	      <tr>	<td><?php echo  $block['blockName']; ?></td>
 		      <td><?php echo  $block['blockDescription']; ?></td>
 		      <td><?php echo date('Y/m/d H:i',$block['blockFoundation']); ?></td>
-		      <td><?php if($block['blockStatus']==1){ echo 'Sleep';}else{echo 'Active';} ?></td>		
+		      <td><?php if($block['blockStatus']==1){ echo 'Sleep';}else{echo 'Active';$countActive++;} ?></td>		
 		      <td><button class="btn btn-warning btn-xs" onclick="blockCheck(<?php echo $block['blockId']; ?>)">check</button>
 		          <button class="btn btn-success btn-xs" onclick="blockUpdate(<?php echo $block['blockId'].",'".$block['blockName']."','".$block['blockDescription']."',".$block['blockStatus']; ?>)">update</button>
 		          <button class="btn btn-info btn-xs" onclick="blockBuild(<?php echo $block['blockId']; ?>)">build</button>
@@ -21,7 +22,21 @@
       </table>
     </div><!--div class="panel"-->
   </div>
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Here are some statistic numbers.</div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Profile</div>
+      <div class="panel-body"><!-- below <span>s filled when these table or charts are generating-->
+      <?php if(count($blocks) <= 2){ ?>
+        No need of counting right now.
+      <?php }else{ ?>
+        <p><strong># Blocks: </strong><span id="Profile_numberOfBlocks"><?php echo (count($blocks)-1); ?></span> (<span id="Profile_numberOfActiveBlocks"><?php echo $countActive; ?></span> Active).</p>
+        <p><strong>Top Block: </strong><span id="Profile_nameOfTopBlock"><!--chart#05--></span>, <span id="Profile_totalDurationOfTopBlock"><!--chart#05--></span> hr.</p>
+        <p><strong>Recorded: </strong><span id="Profile_allRecordedTime"><!--chart#06--></span> hr, (<span id="Profile_allRecordedTimeRatio"><!--chart#06--></span>%).</p>
+        <p><strong>Bricked_at: </strong><span id="Profile_lastUpdated"><!--chart#01--></span>.</p>
+      <?php } ?>
+      </div>
+    </div>
+  </div>
 </div><!--div class="container"-->
 <div class="container">
 <div id="lineTypeCharts" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
@@ -41,6 +56,13 @@
 		yData.reverse();
 		//alert(xData.length);
 		//alert(yData.length);
+		
+		//fill in <span id="Profile_lastUpdated"><!--chart#01--></span>
+		if(yData[29]!=0){
+		  $('#Profile_lastUpdated').html(moment.unix(chartsData[0].brickStart).format('YY/MM/DD'));
+		}else{
+		  $('#Profile_lastUpdated').html('No record');
+		}
 		
        var myChart = echarts.init(document.getElementById('lineTypeCharts'));
        option = {
@@ -220,42 +242,53 @@
 		countAll = countAll - parseInt(chartsDataY[((chartsDataY.length)-1)]);
 		chartsDataY[((chartsData.length)-1)] = parseInt(chartsDataY[((chartsData.length)-1)])- countAll;
 		if(parseInt(chartsDataY[((chartsData.length)-1)])<0) chartsDataY[((chartsData.length)-1)] = 0;
-		for(i=0;i<chartsDataY.length;i++)
+		for(i=0;i<chartsDataY.length;i++){
 			chartsDataY[i] = (chartsDataY[i]/60).toFixed(2);
-
-        var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
-        var option = {
-          animation: false,
-            title: {
-                text: '#05 Against void',
-				top: 'bottom',
-				left: 'center',
-            },
-            tooltip: {},
-	    grid:{
-		left:45,
-		right:'auto',
-	    },
-            xAxis: {
-                data: chartsDataX,
-            },
-            yAxis: {},
-            series: [{
-                name: 'total',
-                type: 'bar',
-                data: chartsDataY,
-				itemStyle: {
-					normal: {
-						color: function(params) {
-							// build a color map as your need.
-							var colorList = ['#c23531','#2f4554','#61a0a8','#d48265','#91c7ae','#749f83','#ca8622','#bda29a','#6e7074','#546570','#c4ccd3'];
-							return colorList[params.dataIndex]
-						}
-					}
-                }				
-            }]
-        };
-        myChart.setOption(option);
+    }
+    
+    //fill in <span id="Profile_nameOfTopBlock"></span> and <span id="Profile_totalDurationOfTopBlock"></span>
+    var indexOfMax=0;
+    for(i=1;(i<(chartsDataY.length-1));i++){
+      if(chartsDataY[i] >= chartsDataY[indexOfMax]){
+        indexOfMax = i;
+      }
+    }
+    $('#Profile_totalDurationOfTopBlock').html(chartsDataY[indexOfMax]);
+    $('#Profile_nameOfTopBlock').html(chartsDataX[indexOfMax]);
+    
+    var myChart = echarts.init(document.getElementById('barTypeCharts-2'));
+    var option = {
+                    animation: false,
+                    title: {
+                      text: '#05 Against void',
+                      top: 'bottom',
+                      left: 'center',
+                    },
+                    tooltip: {},
+                    grid:{
+                      left:45,
+                      right:'auto',
+                    },
+                    xAxis: {
+                    data: chartsDataX,
+                    },
+                    yAxis: {},
+                    series: [{
+                      name: 'total',
+                      type: 'bar',
+                      data: chartsDataY,
+                      itemStyle: {
+                      normal: {
+                        color: function(params) {
+                          // build a color map as your need.
+                          var colorList = ['#c23531','#2f4554','#61a0a8','#d48265','#91c7ae','#749f83','#ca8622','#bda29a','#6e7074','#546570','#c4ccd3'];
+                          return colorList[params.dataIndex]
+                          }
+                        }
+                      }
+                    }]
+                  };
+    myChart.setOption(option);
 </script>
 <div id="pieTypeCharts-2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height:300px;"></div>
 <script>
@@ -271,9 +304,16 @@
 			countAll = countAll + parseInt(chartsData[i].TotalDuration);
 			chartsDataSeriesData.push(objNameValue);
 		}
+		var sinceRegistration = parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value);
 		countAll = countAll - parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value);
 		chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value = parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value)- countAll;
 		if(parseInt(chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value)<0) chartsDataSeriesData[((chartsDataSeriesData.length)-1)].value = 0;		
+		
+		//fill in <span id="Profile_allRecordedTime"><!--chart#06--> and <span id="Profile_allRecordedTimeRatio"><!--chart#06-->
+		//alert('all reco'+(countAll/60).toFixed(2));
+		//alert('since reg'+(sinceRegistration/60).toFixed(2));
+		$('#Profile_allRecordedTime').html((countAll/60).toFixed(2));
+		$('#Profile_allRecordedTimeRatio').html((countAll/sinceRegistration*100).toFixed(2));		
 		
 		var myChart = echarts.init(document.getElementById('pieTypeCharts-2'));
 		var option = {
