@@ -40,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p style="text-align:center;margin-top:7px;">Or take a look at the <a href="<?php echo site_url('Welcome/manual');?>">Manual</a> first?</p>
 		<div class="alert alert-danger" style="display:none;"></div>
     <div class="alert alert-success" style="display:none;"></div>
+    <div class="alert alert-info" style="display:none;"><?php if(isset($cookieUsername)){echo 'not empty';} ?></div>
 	</form>
 
     </div> <!-- /container -->
@@ -47,6 +48,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
     <script>
+    
+      $(document).ready(function(){
+        if($('.alert-info').html()){
+          $('.alert').hide();
+          $('.alert-info').html('Registered! Please login now.').show();
+        }
+      });    
+    
       $("#loginForm").keydown(function(e){
         var e = e || event,
         keycode = e.which || e.keyCode;
@@ -82,4 +91,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           })
 		    }
 	    }
+	    	    
     </script>
