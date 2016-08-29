@@ -50,9 +50,9 @@ class Welcome extends CI_Controller {
 		}else{   //如果通过检查的话调用 模型的 MFregister()方法注册
 			if($this->Mbuilder->MFregister()){
 				set_cookie('builderUsername',$un,time()+6);
-				echo "Welcome, ".$un.". Click to <a href='".site_url()."'>Sign In</a> (redirecting in 2 seconds...)";
-				echo "<script>setTimeout('location=\"".site_url()."\"',1600);</script>";
-				
+				//echo "Welcome, ".$un.". Click to <a href='".site_url()."'>Sign In</a> (redirecting in 2 seconds...)";
+				//echo "<script>setTimeout('location=\"".site_url()."\"',1600);</script>";
+				redirect('Cuser/index');
 			}else{
 				echo "somehow failed, please try again T^T";
 			}
